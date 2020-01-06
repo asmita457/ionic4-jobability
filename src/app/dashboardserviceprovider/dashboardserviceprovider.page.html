@@ -1,0 +1,78 @@
+<!-- <ion-toolbar class="new-background-color">
+ <ion-buttons slot="start">
+ <ion-menu-button></ion-menu-button>
+ </ion-buttons>
+ <ion-item lines="none" class="new-background-color">
+ <ion-title>
+ Home
+ </ion-title>
+ <ion-icon name="notifications"></ion-icon>
+ </ion-item>
+</ion-toolbar> -->
+
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item lines="none" class="new-background-color">
+      <ion-title class="headerNameCss">
+        Home
+      </ion-title>
+      <ion-icon class="headerNameCss" name="notifications" (click)="navigateToNotification()"></ion-icon>
+      <ion-badge *ngIf="badgecount != 0" id="notifications-badge" color="danger">{{badgecount}}</ion-badge>    </ion-item>
+  </ion-toolbar>
+
+  <div class="divPadding">
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="countFontSize">{{totalApplication}}</ion-label>
+        <ion-label class="labelFontSize">Services Posted</ion-label>
+      </ion-col>
+
+    </ion-row>
+  </div>
+</ion-header>
+
+<ion-content class="bacgroundColor">
+
+  <ion-card *ngFor="let item of servicesArray; let j = index" class="cardMargins">
+    <ion-card-content style="background-color: white;">
+      <ion-list>
+        <ion-grid (click)="servicesDetail(item.id)">
+          <ion-row>
+            <ion-col size="12">
+              <ion-label style="font-size: 18px;color:#2b0c43;font-weight: 600;">{{item.name}}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row style="padding:5px">
+            <ion-col size="1">
+              <ion-img src="../../assets/img/location.png" style="width:15px; height:15px; "></ion-img>
+            </ion-col>
+            <ion-col size="11">
+              <ion-label style="font-size: 15px;color:#2b0c43 ; margin-top:-3px">{{item.service_location_name}}
+              </ion-label>
+            </ion-col>
+            <br>
+          </ion-row>
+          <i>
+            <div *ngIf="item.posted_age == 0">
+              <ion-label style="font-size: 15px;color:#2b0c43; padding :5px; font-weight:italic">Posted: Today
+              </ion-label><br>
+            </div>
+            <div *ngIf="item.posted_age != 0">
+              <ion-label style="font-size: 15px;color:#2b0c43; padding :5px; font-weight:italic">Posted:
+                {{item.posted_age}}</ion-label><br>
+            </div>
+          </i>
+        </ion-grid>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <br> <br><br>
+  <ion-infinite-scroll [disabled]="!moreDataAvailable" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  <button class="postjobbutton bottomposition" (click)="navToPostService()">POST SERVICE</button>
+</ion-content>

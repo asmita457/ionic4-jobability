@@ -1,0 +1,23 @@
+<ion-toolbar class="new-background-color">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-item lines="none" class="new-background-color" style="color: #2b0c43">
+    <ion-title>
+      Settings
+    </ion-title>
+    <ion-icon class="headerNameCss" name="notifications" (click)="navigateToNotification()" aria-label="notifications button" alt="notifications button"></ion-icon>
+    <ion-badge *ngIf="badgecount != 0" id="notifications-badge" color="danger">{{badgecount}}</ion-badge>
+  </ion-item>
+</ion-toolbar>
+
+<ion-content>
+  <ion-item lines="none" class="itemColor">
+    <ion-label>Notification</ion-label>
+    <ion-toggle checked={{isActive}}  (ionChange)="onOffNotification($event)"></ion-toggle>
+  </ion-item>
+  <p *ngIf="isActive" class="note">Note: Turn off to stop receiving push notifications on your mobile device
+    from i2Talent.</p>
+  <p *ngIf="!isActive" class="note">Note: Turn on to start receiving push notifications on your mobile device
+    from i2Talent.</p>
+</ion-content>

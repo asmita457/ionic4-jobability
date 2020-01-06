@@ -1,0 +1,56 @@
+.profile-picture {
+    padding: 3px;
+    border-radius: 100%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    margin: 5% auto;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    background: #d6d1c3;
+
+  }
+  
+  .ionSelect{
+      min-width: 100%;
+    --padding-start: 0%;
+  }
+
+  .itemPadding{
+    --padding-start: 0%;
+  }
+  .redlabel{
+    color: red;
+  }
+
+  .blacklabel{
+    color: black;
+  }
+
+
+//   .cameraBacground{
+//     border: 1px solid #fcefefe7;
+//     padding: 10px;
+//     border-radius: 100%;
+//     -webkit-box-sizing: content-box;
+//     -moz-box-sizing: content-box;
+//     box-sizing: content-box;
+//     width: 15px;
+//     height: 15px;
+//     overflow: hidden;
+//     background: #d6d1c3;
+//     margin-left: 53%;
+//     position: absolute;
+//   }
+
+// .cameraIcon{
+//     zoom: 2.0;
+//     display: contents;
+//   }
+
+// ::ng-deep .mat-select-content{
+//   width:2000px;
+//   background-color: red;
+//   font-size: 10px;   
+// }

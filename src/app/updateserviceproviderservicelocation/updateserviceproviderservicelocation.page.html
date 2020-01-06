@@ -1,0 +1,78 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style="color: #2b0c43;"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Edit Service Location</ion-title>
+  </ion-item>
+</ion-toolbar>
+
+<ion-content>
+  <ion-card class="cardMargins boxShadow">
+    <ion-card-content>
+      <div class="formPadding">
+        <form [formGroup]="updateServiceLocationForm"
+          (ngSubmit)="updateServiceLocation(updateServiceLocationForm.value)">
+          <mat-form-field class="inputFields">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country" [errorStateMatcher]="esMatcher"
+              (selectionChange)="selectedCountryValue($event.value)" [(ngModel)]="editServiceLocationDetails.Country">
+              <mat-option *ngFor="let item of countryArray" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateServiceLocationForm.controls.country.errors?.required">Country is
+                required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- <div *ngIf="showPreferredStateCity"> -->
+          <mat-form-field class="inputFields">
+            <mat-label> Preferred State/City</mat-label>
+            <mat-select formControlName="stateCity" [errorStateMatcher]="esMatcher"
+              (selectionChange)="selectedStateAndCityValue($event.value)" [(ngModel)]="stateAndCityIds" multiple>
+              <mat-option *ngFor="let item of stateAndCityArray" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateServiceLocationForm.controls.stateCity.errors?.required">Please select at least one
+                preferred state/city.</span>
+            </mat-error>
+          </mat-form-field>
+          <!-- </div> -->
+          <br>
+          <button type="submit" class="buttonfont selector">SAVE</button>
+        </form>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <!-- <div style="margin-top:10%;color:#2b0c43;" class="inputDiv">
+    <ion-label class="labelclass"
+      [ngClass]="{'redlabel' : isCountrySelected == true, 'blacklabel' : isCountrySelected == false}">Country
+    </ion-label>
+    <ion-select class="ionSelectBorder" (ionChange)="selectedCountryValue($event)" [(ngModel)]='preselectedCountry'
+      placeholder="Select Country">
+      <ion-select-option *ngFor="let item of countryList;" [value]="item">
+        {{item}}</ion-select-option>
+    </ion-select>
+
+    <div *ngIf="showPreferredStateCity">
+      <ion-label class="labelclass"
+        [ngClass]="{'redlabel' : isPreferredStateCitySelected == true, 'blacklabel' : isPreferredStateCitySelected == false}"
+        style="color:#2b0c43;">
+        Preferred
+        State/City
+      </ion-label>
+      <ion-select class="ionSelectBorder" [(ngModel)]="option" (ionChange)="selectedStateCityValue($event)"
+        placeholder="Select Preferred State/City" multiple="true">
+        <ion-select-option *ngFor="let item of stateCityList;" [value]="item">
+          {{item}}</ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+
+  <div class="saveButtonPadding">
+    <button class="buttonfont" (click)="updateServiceLocation()">SAVE</button>
+  </div> -->
+
+</ion-content>

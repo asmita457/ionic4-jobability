@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item lines="none" class="new-background-color">
+      <ion-title class="headerNameCss">
+        Services
+      </ion-title>
+      <ion-icon class="headerNameCss" name="notifications" (click)="navigateToNotification()"></ion-icon>
+      <ion-badge *ngIf="badgecount != 0" id="notifications-badge" color="danger">{{badgecount}}</ion-badge>
+    </ion-item>
+  </ion-toolbar>
+
+  <div class="divPadding">
+    <ion-searchbar style="background: #ffef2e" #q [(ngModel)]="searchTitle" (keyup.enter)="search(q.value)"
+      placeholder="Search by Keyword"></ion-searchbar>
+  </div>
+  <div class="dropDown">
+    <!-- <ion-select class="headerNameCss " (ionChange)="onSelectDisability($event)" placeholder="All Disabilities">
+      <ion-select-option *ngFor="let item of disabilityListArray;" [selected]="item.id == disability_id"
+        [value]="item.id">
+        {{item.name}}</ion-select-option>
+    </ion-select> -->
+
+    <mat-select [(ngModel)]="disability_id" placeholder="All Disabilities"
+      (selectionChange)="onSelectDisability($event.value)"  [aria-label]="readDisability">
+      <mat-option *ngFor="let item of disabilityListArray" [value]="item.id">
+        {{item.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <!-- <div class="dropDown dropDownBorder">
+    <mat-form-field class="inputFields">
+      <mat-label>All Disabilities</mat-label>
+      <mat-select [(ngModel)]="disability_id" (selectionChange)="onSelectDisability($event.value)">
+        <mat-option *ngFor="let item of disabilityListArray" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+  </div> -->
+
+</ion-header>
+<ion-content>
+  <div *ngIf="serviceAvailable">
+    <ion-card *ngFor="let item of serviceListArray;" class="cardMargins" (click)="serviceDetails(item.id)">
+      <ion-card-content>
+        <ion-list>
+          <!-- <ion-row> -->
+          <!-- <ion-col size="10" (click)="jobDescription(item.id)"> -->
+          <ion-row>
+            <!-- <ion-col size="11"> -->
+            <ion-label class="jobNameCss">{{item.name}}</ion-label>
+            <!-- </ion-col> -->
+          </ion-row>
+          <ion-row>
+            <ion-label class="companyNameCss">{{item.organization_name}}
+            </ion-label>
+          </ion-row>
+          <!-- <ion-row>
+                    <ion-col size="1">
+                      <ion-img src="../../assets/img/experience.png" class="experienceAndLocationPng">
+                      </ion-img>
+                    </ion-col>
+                    <ion-col size="11">
+                      <ion-label>{{item.min_experience}} - {{item.max_experience}} years</ion-label>
+                    </ion-col>
+                  </ion-row> -->
+
+          <ion-row>
+            <ion-col size="1" style="padding: 2% 0% 0% 0%;">
+              <ion-img src="../../assets/img/location.png" class="locationPng">
+              </ion-img>
+            </ion-col>
+            <ion-col size="11">
+              <ion-label>{{item.service_location_name}}</ion-label>
+              <br>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-label><i>Posted: {{item.posted_age}}</i></ion-label>
+          </ion-row>
+
+
+          <!-- </ion-col> -->
+          <!-- <ion-col size="2">
+                  <ion-icon ios="ios-heart" md="md-heart" class="iconcss" style="float:right;color:#2b0c43;"></ion-icon>
+                </ion-col> -->
+
+          <!-- </ion-row> -->
+
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!serviceAvailable">
+    <h5 align="center">No result for search service</h5>
+  </div>
+  <br>
+  <ion-infinite-scroll [disabled]="!moreDataAvailable" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

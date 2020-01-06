@@ -1,0 +1,166 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Contact Information</ion-title>
+  </ion-item>
+</ion-toolbar>
+
+<ion-content>
+
+  <!-- <div class="cameraBacground">
+    <ion-icon class="cameraIcon" ios="ios-camera" md="md-camera"></ion-icon>
+  </div> -->
+  <ion-card class="cardMargins">
+    <ion-card-content>
+      <div class="formPadding">
+        <form [formGroup]="updateContactDetailsForm" (ngSubmit)="updateContactDetail(updateContactDetailsForm.value)">
+
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Name" [(ngModel)]="dataArray.name" formControlName="name"
+              [errorStateMatcher]="esMatcher" pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(updateContactDetailsForm.controls.name.invalid && updateContactDetailsForm.controls.name.touched) || (updateContactDetailsForm.controls.name.invalid && showErrorIcon && !updateContactDetailsForm.controls.name.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.name.errors?.required">Name is required.</span>
+              <span *ngIf="updateContactDetailsForm.controls.name.errors?.pattern">Please enter valid name.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Email" [(ngModel)]="dataArray.email" formControlName="email"
+              [errorStateMatcher]="esMatcher" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(updateContactDetailsForm.controls.email.invalid && updateContactDetailsForm.controls.email.touched) || (updateContactDetailsForm.controls.email.invalid && showErrorIcon && !updateContactDetailsForm.controls.email.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.email.errors?.required">Email is required.</span>
+              <span *ngIf="updateContactDetailsForm.controls.email.errors?.pattern">Please enter valid email
+                address.</span>
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="inputFields">
+            <input type="tel" matInput placeholder="Mobile" [(ngModel)]="dataArray.mobile" formControlName="mobile"
+              [errorStateMatcher]="esMatcher" pattern="^[0-9]{10}$">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(updateContactDetailsForm.controls.mobile.invalid && updateContactDetailsForm.controls.mobile.touched) || (updateContactDetailsForm.controls.mobile.invalid  && showErrorIcon && !updateContactDetailsForm.controls.mobile.touched)">
+              error</mat-icon>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.mobile.errors?.required">Mobile number is required.</span>
+              <span
+                *ngIf="updateContactDetailsForm.controls.mobile.errors?.minlength || updateContactDetailsForm.controls.mobile.errors?.maxlength">Please
+                enter valid mobile number.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender" [errorStateMatcher]="esMatcher" [(ngModel)]="dataArray.gender"
+              (selectionChange)="selectedGender($event.value)" [aria-label]="readGender">
+              <mat-option *ngFor="let item of contactGenderArray;" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.gender.errors?.required">Gender is required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <mat-label>Marital Status</mat-label>
+            <mat-select formControlName="maritalStatus" [errorStateMatcher]="esMatcher"
+              [(ngModel)]="dataArray.marritalStatus" (selectionChange)="selectedMaritalStatus($event.value)"
+              [aria-label]="readMaritalStatus">
+              <mat-option *ngFor="let item of contactMaritalStatusArray" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.maritalStatus.errors?.required">Marital status is
+                required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <mat-label>Disability Type</mat-label>
+            <mat-select role="listbox" formControlName="disability" [errorStateMatcher]="esMatcher"
+              [(ngModel)]="dataArray.disability_id" multiple (selectionChange)="selectedDisabilities($event.value)"
+              [aria-label]="readDisabilityType">
+              <mat-option role="option" *ngFor="let item of disability_list" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.disability.errors?.required">Please select at least one
+                disability type.</span>
+            </mat-error>
+          </mat-form-field>
+
+        
+          <mat-form-field class="inputFields">
+            <textarea matInput placeholder="Address" [(ngModel)]="dataArray.address" formControlName="address"
+              [errorStateMatcher]="esMatcher" pattern=".*[^ ].*"></textarea>
+            <mat-icon matSuffix color="warn"
+              *ngIf="(updateContactDetailsForm.controls.address.invalid && updateContactDetailsForm.controls.address.touched) || (updateContactDetailsForm.controls.address.invalid && showErrorIcon && !updateContactDetailsForm.controls.address.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.address.errors?.required">Address is required.</span>
+              <span *ngIf="updateContactDetailsForm.controls.address.errors?.pattern">Please enter valid address.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country" [errorStateMatcher]="esMatcher"
+              (selectionChange)="selectedCountryValue($event.value)" [(ngModel)]="dataArray.country"
+              [aria-label]="readCountry">
+              <mat-option *ngFor="let item of countryArrayFromLocalStorage" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.country.errors?.required">Country is
+                required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state" [errorStateMatcher]="esMatcher"
+              (selectionChange)="selectedStatesValue($event.value)" [(ngModel)]="dataArray.state"
+              [aria-label]="readState">
+              <mat-option *ngFor="let item of cityAndStateArrayFromLocalStorage" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.state.errors?.required">State is
+                required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <mat-label>City</mat-label>
+            <mat-select formControlName="city" [errorStateMatcher]="esMatcher" [(ngModel)]="dataArray.city"
+              (selectionChange)="selectedCityValue($event.value)" [aria-label]="readCity">
+              <mat-option *ngFor="let item of cityNameArray" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateContactDetailsForm.controls.city.errors?.required">City is
+                required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <button type="submit" class="buttonfont selector loginButton">SAVE</button>
+        </form>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

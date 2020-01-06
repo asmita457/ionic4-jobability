@@ -1,0 +1,58 @@
+.ionSelect{
+    --background: var(--ion-item-background,var(--ion-background-color));
+    }
+    
+    .select-text {
+    color: #2b0c43 !important;
+    }
+    
+    .divPadding{
+    padding: 5% 5% 5% 5%;
+    border-bottom: 1px solid #807b7b5e;
+    }
+    .countFontSize{
+    font-size: 18px;
+    color:#2b0c43;
+    padding-right: 5%;
+    }
+    .labelFontSize{
+    color:#2b0c43;
+    font-size: 15px;
+    }
+    
+    .noApplicationForJob{
+    width: 80%;
+    height: 10%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    }
+    
+    
+    .circle-pic{
+    width:60px;
+    height:50px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    }
+    
+    .headingLabel{
+    color:#2b0c43;
+    font-size:12px;
+    font-weight:bold;
+    }
+    
+    .contentInfo{
+    font-size:15px;
+    color:#2b0c43;
+    display: inline-block;
+    }
+    
+    .inoItem{
+    --padding-start: 0%;
+    
+    }

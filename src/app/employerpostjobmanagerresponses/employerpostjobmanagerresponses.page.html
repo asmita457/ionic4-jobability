@@ -1,0 +1,200 @@
+<ion-toolbar class="new-background-color">
+  <ion-row>
+    <ion-col size="2" (click)="goBack()">
+      <ion-img src="../../assets/img/backnavigation.png" style="padding: 20% 25% 25% 25%;">
+      </ion-img>
+    </ion-col>
+    <ion-col size="10">
+      <ion-title class="titlecss" style="margin-top:4px">Post Job</ion-title>
+    </ion-col>
+  </ion-row>
+</ion-toolbar>
+
+
+<ion-content>
+  <h5 align="center" style="color:#2b0c43">Manage Responses</h5>
+
+  <ion-grid style="margin-top:5%">
+    <ion-row>
+      <ion-col size="6" *ngIf="emailNonSelected">
+        <button (click)="jobPostResponsesWithEmail()" type="submit"
+          class="postjobbuttonfont selector loginWithOtpButton">EMAIL</button>
+      </ion-col>
+      <ion-col size="6" *ngIf="emailSelected">
+        <button type="submit" class="postjobbuttonafterclick selector loginWithOtpButton">EMAIL</button>
+      </ion-col>
+
+
+      <ion-col size="6" *ngIf="walkinNonSelected">
+        <button (click)="jobPostResponsesWithWalkin()" type="submit"
+          class="postjobbuttonfont selector loginWithOtpButton">WALK-IN</button>
+      </ion-col>
+      <ion-col size="6" *ngIf="walkinSelected">
+        <button type="submit" class="postjobbuttonafterclick selector loginWithOtpButton">WALK-IN</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="inputDiv" *ngIf="showEmailSection">
+
+    <ion-item class="inoItem headerNameCss" lines="none">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label>
+              Email1:
+            </ion-label>
+            <ion-label name="email1">{{email1}}</ion-label>
+            <!-- <ion-input class="headerNameCss" type="email" name="email1" [(ngModel)]="email1"
+  (ionChange)="emailValidator()" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+  </ion-input> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item class="inoItem headerNameCss" lines="none">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label>
+              Email2:
+            </ion-label>
+            <ion-label name="email2">{{email2}}</ion-label>
+            <!-- <ion-input class="headerNameCss" type="email" name="email1" [(ngModel)]="email1"
+  (ionChange)="emailValidator()" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+  </ion-input> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-row>
+      <ion-col size="1">
+        <ion-checkbox [(ngModel)]="emailIdDisplay" clalabelss="checkBoxBorder"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <ion-label class="headerNameCss">Do not display this email Id to applicants </ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="inputDiv" *ngIf="showWalkinSection">
+
+
+    <ion-item class="inoItem headerNameCss">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showFromDateErrorMsg == true, 'blacklabel' : showFromDateErrorMsg == false}">
+              From Date
+            </ion-label>
+            <ion-datetime #myPicker style="height: 30px" align="start" (ionChange)="fromDateValidator($event)"
+              displayFormat="DD-MM-YYYY" name="fromDate" [(ngModel)]="fromDate" min="{{startFromDate}}"
+              max="2050-12-30">
+            </ion-datetime>
+            <!-- <ion-input class="headerNameCss" type="email" name="email1" [(ngModel)]="email1" (ionChange)="fromDateValidator()" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+  </ion-input> -->
+          </ion-col>
+          <ion-col size="2" *ngIf="showFromDateErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-row>
+      <ion-col size="12">
+        <p class="errorMsg" *ngIf="showFromDateErrorMsg">{{fromDateErrorMsg}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-item class="inoItem headerNameCss">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showToDateErrorMsg == true, 'blacklabel' : showToDateErrorMsg == false}">
+              To Date
+            </ion-label>
+
+            <ion-datetime #myPicker style="height: 30px" align="start" min="{{startToDate}}" max="2050-12-30"
+              displayFormat="DD-MM-YYYY" name="toDate" (ionChange)="toDateValidator()" [(ngModel)]="toDate">
+            </ion-datetime>
+          </ion-col>
+          <ion-col size="2" *ngIf="showToDateErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-row>
+      <ion-col size="12">
+        <p class="errorMsg" *ngIf="showToDateErrorMsg">{{toDateErrorMsg}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-item class="inoItem headerNameCss">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showStartTimeErrorMsg == true, 'blacklabel' : showStartTimeErrorMsg == false}">
+              Starting Time
+            </ion-label>
+            <ion-datetime [(ngModel)]="StartTime" displayFormat="HH:mm" (ionChange)="startTimeValidator($event)">
+            </ion-datetime>
+
+          </ion-col>
+          <ion-col size="2" *ngIf="showStartTimeErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-row>
+      <ion-col size="12">
+        <p class="errorMsg" *ngIf="showStartTimeErrorMsg">{{startTimeErrorMsg}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-item class="inoItem headerNameCss">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showEndTimeErrorMsg == true, 'blacklabel' : showEndTimeErrorMsg == false}">
+              End Time
+            </ion-label>
+            <ion-datetime [(ngModel)]="EndTime" displayFormat="HH:mm" min="{{StartTime}}"
+              (ionChange)="endTimeValidator()"></ion-datetime>
+          </ion-col>
+          <ion-col size="2" *ngIf="showEndTimeErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-row>
+      <ion-col size="12">
+        <p class="errorMsg" *ngIf="showEndTimeErrorMsg">{{endTimeErrorMsg}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="inputDiv">
+    <ion-row>
+      <ion-col size="1">
+        <ion-checkbox [(ngModel)]="show_contact" clalabelss="checkBoxBorder"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <ion-label class="headerNameCss"> Do not display this contact details to applicants </ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="saveButtonPadding">
+    <button class="buttonfont" (click)="nextPage()">POST JOB</button>
+  </div>
+</ion-content>

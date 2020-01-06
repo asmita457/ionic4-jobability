@@ -1,0 +1,104 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Educational Information</ion-title>
+  </ion-item>
+</ion-toolbar>
+<ion-content padding>
+
+
+  <div class="formPadding">
+    <form [formGroup]="updateEducationalDetailsForm"
+      (ngSubmit)="updateEducationalDetail(updateEducationalDetailsForm.value)">
+
+      <label id="selectEducationalType">Select Educational Type</label>
+      <mat-radio-group aria-label="selectEducationalType" (change)="onSelect($event.value)" class="radioButtonGroup"
+        formControlName="educationtype" [(ngModel)]="educationType">
+        <div *ngIf="showEducationTypes">
+          <mat-radio-button class="radioButton" value="1">No Schooling</mat-radio-button><br>
+          <mat-radio-button class="radioButton" value="2">Pre-Primary</mat-radio-button><br>
+          <mat-radio-button class="radioButton" value="3">Primary</mat-radio-button><br>
+        </div>
+        <mat-radio-button class="radioButton" value="4">Secondary and above</mat-radio-button>
+        <mat-error>
+          <span
+            *ngIf="updateEducationalDetailsForm.controls.educationtype.errors?.required && showErrorIcon">Educational
+            type is required.</span>
+        </mat-error>
+      </mat-radio-group>
+
+      <div class="inputDiv" *ngIf="showDiv">
+        <mat-form-field class="inputFields">
+          <mat-label>Qualification</mat-label>
+          <mat-select formControlName="qualification" [(ngModel)]="qualificationId"
+            (selectionChange)="selectedQualification($event.value)" [aria-label]="readQualification">
+            <mat-option *ngFor="let item of qualificationList" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="updateEducationalDetailsForm.controls.qualification.errors?.required">Qualification is
+              required.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <input matInput placeholder="Specialization" [(ngModel)]="specialization" formControlName="specialization"
+            [errorStateMatcher]="esMatcher" pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z. ]+$">
+          <mat-icon matSuffix color="warn"
+            *ngIf="(updateEducationalDetailsForm.controls.specialization.invalid && updateEducationalDetailsForm.controls.specialization.touched) || (updateEducationalDetailsForm.controls.specialization.invalid && showErrorIcon && !updateEducationalDetailsForm.controls.specialization.touched)">
+            error
+          </mat-icon>
+          <mat-error>
+            <span *ngIf="updateEducationalDetailsForm.controls.specialization.errors?.required">Specialization is
+              required.</span>
+            <span *ngIf="updateEducationalDetailsForm.controls.specialization.errors?.pattern">Please enter valid
+              specialization.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <mat-label>University / Board</mat-label>
+          <mat-select formControlName="university" [(ngModel)]="instituteUniversityId"
+            (selectionChange)="selectedUniversity($event.value)" [aria-label]="readUniversity">
+            <mat-option *ngFor="let item of universityList" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="updateEducationalDetailsForm.controls.university.errors?.required">University / board is
+              required.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <mat-label>Passing Year</mat-label>
+          <mat-select formControlName="passingYear" [(ngModel)]="yearOfPassing" (selectionChange)="selectedPassingYear($event.value)" [aria-label]="readPassingYear">
+            <mat-option *ngFor="let item of passingYear" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="updateEducationalDetailsForm.controls.university.errors?.required">Passing year is
+              required.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <label id="typeOfCourse">Type of
+          Course</label>
+        <mat-radio-group aria-label="typeOfCourse" class="radioButtonGroup" [(ngModel)]="typeOfCourse"
+          formControlName="typeOfCourse">
+          <mat-radio-button class="radioButton" value="part_time">Part Time</mat-radio-button>
+          <mat-radio-button class="radioButton" value="full_time">Full Time</mat-radio-button>
+          <mat-radio-button class="radioButton" value="correspondence">Correspondence</mat-radio-button>
+          <mat-error>
+            <span *ngIf="updateEducationalDetailsForm.controls.typeOfCourse.errors?.required && showErrorIcon">Type of
+              course is required.</span>
+          </mat-error>
+        </mat-radio-group>
+        <br>
+      </div>
+      <button type="submit" class="buttonfont selector loginButton">SAVE</button>
+    </form>
+  </div>
+</ion-content>

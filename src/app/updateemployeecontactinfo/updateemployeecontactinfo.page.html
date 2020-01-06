@@ -1,0 +1,267 @@
+<ion-toolbar class="new-background-color">
+        <ion-item lines="none" class="new-background-color">
+                <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+                <ion-title style="margin-left: 5%; color: #2b0c43">Contact Information</ion-title>
+        </ion-item>
+</ion-toolbar>
+<ion-content>
+        <div class="inputDiv">
+                <ion-item class="inoItem headerNameCss" style="margin-top:5%">
+                        <ion-grid fixed>
+                                <ion-row>
+                                        <ion-col size="10">
+                                                <ion-label position="floating"
+                                                        [ngClass]="{'redlabel' : showNameErrorMsg == true, 'blacklabel' : showNameErrorMsg == false}">
+                                                        Name
+                                                </ion-label>
+                                                <ion-input type="text" name="first_name" [(ngModel)]="first_name"
+                                                        (ionChange)="employeeNameValidator()" required
+                                                        pattern="[a-zA-Z0-9\s]{1,}"></ion-input>
+                                        </ion-col>
+                                        <ion-col size="2" *ngIf="showNameErrorMsg">
+                                                <ion-img class="errorimg" src="assets/img/error.png">
+                                                </ion-img>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                </ion-item>
+                <ion-row>
+                        <ion-col size="10">
+                                <p class="errorMsg" *ngIf="showNameErrorMsg">{{nameErrorMsg}}</p>
+                        </ion-col>
+                </ion-row>
+
+                <ion-item class="inoItem headerNameCss" style="margin-top:-9px">
+                        <ion-grid fixed>
+                                <ion-row>
+                                        <ion-col size="10">
+                                                <ion-label position="floating"
+                                                        [ngClass]="{'redlabel' : showDesignationErrorMsg == true, 'blacklabel' : showDesignationErrorMsg == false}">
+                                                        Designation
+                                                </ion-label>
+                                                <ion-input type="text" name="designation" [(ngModel)]="designation"
+                                                        (ionChange)="employeeDesignationValidator()" required
+                                                        pattern="[a-zA-Z0-9\s]{1,}">
+                                                </ion-input>
+                                        </ion-col>
+                                        <ion-col size="2" *ngIf="showDesignationErrorMsg">
+                                                <ion-img class="errorimg" src="assets/img/error.png">
+                                                </ion-img>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                </ion-item>
+                <ion-row>
+                        <ion-col size="10">
+                                <p class="errorMsg" *ngIf="showDesignationErrorMsg">{{designationErrorMsg}}</p>
+                        </ion-col>
+                </ion-row>
+
+
+                <ion-item class="inoItem headerNameCss" style="margin-top:-9px">
+                        <ion-grid fixed>
+                                <ion-row>
+                                        <ion-col size="10">
+                                                <ion-label position="floating"
+                                                        [ngClass]="{'redlabel' : showEmailErrorMsg == true, 'blacklabel' : showEmailErrorMsg == false}">
+                                                        Email
+                                                </ion-label>
+                                                <ion-input type="email" name="email" [(ngModel)]="email"
+                                                        (ionChange)="employeeEmailValidator()" required
+                                                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$">
+                                                </ion-input>
+                                        </ion-col>
+                                        <ion-col size="2" *ngIf="showEmailErrorMsg">
+                                                <ion-img class="errorimg" src="assets/img/error.png">
+                                                </ion-img>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                </ion-item>
+                <ion-row>
+                        <ion-col size="10">
+                                <p class="errorMsg" *ngIf="showEmailErrorMsg">{{emailErrorMsg}}</p>
+                        </ion-col>
+                </ion-row>
+
+                <ion-item class="inoItem headerNameCss" style="margin-top:-9px">
+                        <ion-grid fixed>
+                                <ion-row>
+                                        <ion-col size="10">
+                                                <ion-label position="floating"
+                                                        [ngClass]="{'redlabel' : showAltEmailErrorMsg == true, 'blacklabel' : showAltEmailErrorMsg == false}">
+                                                        Alternate Email (Optional)
+                                                </ion-label>
+                                                <ion-input type="email" name="business_email"
+                                                        [(ngModel)]="business_email"
+                                                        (ionChange)="employeeAltEmailValidator()">
+                                                </ion-input>
+                                        </ion-col>
+                                        <ion-col size="2" *ngIf="showAltEmailErrorMsg">
+                                                <ion-img class="errorimg" src="assets/img/error.png">
+                                                </ion-img>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                </ion-item>
+                <ion-row>
+                        <ion-col size="10">
+                                <p class="errorMsg" *ngIf="showAltEmailErrorMsg">{{altEmailErrorMsg}}</p>
+                        </ion-col>
+                </ion-row>
+
+                <ion-item class="inoItem headerNameCss">
+                        <ion-grid fixed>
+                                <ion-row>
+                                        <ion-col size="10">
+                                                <ion-label position="floating"
+                                                        [ngClass]="{'redlabel' : showPhoneErrorMsg == true, 'blacklabel' : showPhoneErrorMsg == false}">
+                                                        Phone (Optional)
+                                                </ion-label>
+                                                <ion-input type="number" name="phone" [(ngModel)]="phone"></ion-input>
+                                        </ion-col>
+                                        <ion-col size="2" *ngIf="showPhoneErrorMsg">
+                                                <ion-img class="errorimg" src="assets/img/error.png">
+                                                </ion-img>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                </ion-item>
+                <ion-row>
+                        <ion-col size="10">
+                                <p class="errorMsg" *ngIf="showPhoneErrorMsg">{{phoneErrorMsg}}</p>
+                        </ion-col>
+                </ion-row>
+
+
+
+                <ion-item class="inoItem headerNameCss">
+                        <ion-grid fixed>
+                                <ion-row>
+                                        <ion-col size="10">
+                                                <ion-label position="floating"
+                                                        [ngClass]="{'redlabel' : showMobileErrorMsg == true, 'blacklabel' : showMobileErrorMsg == false}">
+                                                        Mobile
+                                                </ion-label>
+                                                <ion-input type="number" name="mobile" [(ngModel)]="mobile"
+                                                        (ionChange)="employeeMobileValidator()" required
+                                                        pattern="^[0-9]{10}$"></ion-input>
+                                        </ion-col>
+                                        <ion-col size="2" *ngIf="showMobileErrorMsg">
+                                                <ion-img class="errorimg" src="assets/img/error.png">
+                                                </ion-img>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                </ion-item>
+                <ion-row>
+                        <ion-col size="10">
+                                <p class="errorMsg" *ngIf="showMobileErrorMsg">{{mobileErrorMsg}}</p>
+                        </ion-col>
+                </ion-row>
+
+
+                <ion-item class="inoItem headerNameCss">
+                        <ion-grid fixed>
+                                <ion-row>
+                                        <ion-col size="10">
+                                                <ion-label position="floating" style="
+                margin-top:-9px" [ngClass]="{'redlabel' :
+                showAddressErrorMsg==true, 'blacklabel' :
+                showAddressErrorMsg==false}">
+                                                        Address
+                                                </ion-label>
+                                                <ion-input type="text" name="address" [(ngModel)]="address"
+                                                        (ionChange)="employeeAddressValidator()" required
+                                                        pattern=".*[^ ].*">
+                                                </ion-input>
+                                        </ion-col>
+                                        <ion-col size="2" *ngIf="showAddressErrorMsg">
+                                                <ion-img class="errorimg" src="assets/img/error.png">
+                                                </ion-img>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                </ion-item>
+                <ion-row>
+                        <ion-col size="10">
+                                <p class="errorMsg" *ngIf="showAddressErrorMsg">{{addressErrorMsg}}</p>
+                        </ion-col>
+                </ion-row>
+                <ion-label class="headerNameCss"
+                        [ngClass]="{'redlabel' : isCountrySelected == true, 'blacklabel' : isCountrySelected == false}">
+                        Country:</ion-label>
+                <ion-select class="ionSelectBorder headerNameCss" (ionChange)="selectedCountryValue($event)"
+                        placeholder="Select Country">
+                        <ion-select-option *ngFor="let item of countryArrayFromLocalStorage;"
+                                [selected]="item.id == country" [value]="item">
+                                {{item.name}}</ion-select-option>
+                </ion-select>
+                <br>
+                <ion-label *ngIf="selectCountry" style="color: red">Please select Country</ion-label>
+
+                <div *ngIf="enableStateField == false">
+
+                        <br>
+                        <ion-label class="headerNameCss"
+                                [ngClass]="{'redlabel' : isStateSelected == true, 'blacklabel' : isStateSelected == false}">
+                                State:
+                        </ion-label>
+                        <ion-select class="ionSelectBorder headerNameCss" (ionChange)="selectedStatesValue($event)"
+                                placeholder="Select State">
+                                <ion-select-option *ngFor="let item of cityAndStateArrayFromLocalStorage;"
+                                        [selected]="item.id == state_id" [value]="item">
+                                        {{item.name}}</ion-select-option>
+                        </ion-select>
+                        <br>
+                        <ion-label *ngIf="selectState" style="color: red">Please select State</ion-label>
+
+                </div>
+                <div *ngIf="enableCityField == false">
+                        <br>
+                        <ion-label class="headerNameCss"
+                                [ngClass]="{'redlabel' : isCitySelected == true, 'blacklabel' : isCitySelected == false}">
+                                City:
+                        </ion-label>
+                        <ion-select class="ionSelectBorder headerNameCss" (ionChange)="selectedCityValue($event)"
+                                placeholder="Select City">
+                                <ion-select-option *ngFor="let item of cityNameArray;" [selected]="item.id == city"
+                                        [value]="item">
+                                        {{item.name}}</ion-select-option>
+                        </ion-select>
+                        <br>
+                        <ion-label *ngIf="selectCity" style="color: red">Please select City</ion-label>
+                </div>
+
+                <ion-item class="inoItem headerNameCss">
+                        <ion-grid fixed>
+                                <ion-row>
+                                        <ion-col size="10">
+                                                <ion-label position="floating"
+                                                        [ngClass]="{'redlabel' : showZipcodeErrorMsg == true, 'blacklabel' : showZipcodeErrorMsg == false}">
+                                                        ZIP / PIN Code
+                                                </ion-label>
+                                                <ion-input type="number" name="zip_code" [(ngModel)]="zip_code"
+                                                        (ionChange)="employeeZipcodeValidator()" required
+                                                        pattern="[0-9]{6,}">
+                                                </ion-input>
+                                        </ion-col>
+                                        <ion-col size="2" *ngIf="showZipcodeErrorMsg">
+                                                <ion-img class="errorimg" src="assets/img/error.png">
+                                                </ion-img>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                </ion-item>
+                <ion-row>
+                        <ion-col size="10">
+                                <p class="errorMsg" *ngIf="showZipcodeErrorMsg">{{zipcodeErrorMsg}}</p>
+                        </ion-col>
+                </ion-row>
+
+        </div>
+
+        <div class="saveButtonPadding">
+                <button class="buttonfont" (click)="updateEmployerContactDetail()">SAVE</button>
+        </div>
+</ion-content>

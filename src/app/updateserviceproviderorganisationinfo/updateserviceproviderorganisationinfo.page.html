@@ -1,0 +1,116 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Organization Information</ion-title>
+  </ion-item>
+</ion-toolbar>
+
+<ion-content>
+  <div class="formPadding">
+    <form [formGroup]="updateOrgInfoForm" (ngSubmit)="updateOrgInfoDetails(updateOrgInfoForm.value)">
+      <div class="inputDiv">
+        <mat-form-field class="inputFields">
+          <mat-label>Service Provider Type</mat-label>
+          <mat-select formControlName="serviceProviderType" [(ngModel)]="preSelectionData.organizationtype"
+            (selectionChange)="selectedServiceProviderValue($event.value)">
+            <mat-option *ngFor="let item of serviceProviderArray" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="updateOrgInfoForm.controls.serviceProviderType.errors?.required">Service provider type is
+              required.</span>
+          </mat-error>
+        </mat-form-field>
+        <div *ngIf="show">
+          <mat-form-field class="inputFields">
+            <mat-label>Service Provider Category</mat-label>
+            <mat-select formControlName="serviceProviderCategory" [(ngModel)]="preSelectionData.serviceProviderCategory"
+              multiple>
+              <mat-option *ngFor="let item of organisationTypeList" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="updateOrgInfoForm.controls.serviceProviderCategory.errors?.required">Service provider
+                Category is required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Organization Name" [(ngModel)]="preSelectionData.organisation_name"
+              formControlName="organisatioName" [errorStateMatcher]="esMatcher" pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(updateOrgInfoForm.controls.organisatioName.invalid && updateOrgInfoForm.controls.organisatioName.touched) || (updateOrgInfoForm.controls.organisatioName.invalid && showErrorIcon && !updateOrgInfoForm.controls.organisatioName.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="updateOrgInfoForm.controls.organisatioName.errors?.required">Organization name is
+                required.</span>
+              <span *ngIf="updateOrgInfoForm.controls.organisatioName.errors?.pattern">Please enter valid
+                organization name.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="inputFields">
+          <mat-label>Disability Type</mat-label>
+          <mat-select formControlName="disability" [errorStateMatcher]="esMatcher"
+            [(ngModel)]="preSelectionData.disabilityIds" multiple>
+            <mat-option *ngFor="let item of disabilityArray" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="updateOrgInfoForm.controls.disability.errors?.required">Please select at least one
+              disability type.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <mat-label>Services Offered</mat-label>
+          <mat-select formControlName="serviceOffered" [(ngModel)]="preSelectionData.servicetype_id" multiple>
+            <mat-option *ngFor="let item of serviceOfferedList" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="updateOrgInfoForm.controls.serviceOffered.errors?.required">Services offered is
+              required.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <mat-label>Year of Establishment</mat-label>
+          <mat-select formControlName="yearOfEstablishment" [(ngModel)]="preSelectionData.year_establishment">
+            <mat-option *ngFor="let item of yearArray" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="updateOrgInfoForm.controls.yearOfEstablishment.errors?.required">Year of establishment is
+              required.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <input matInput placeholder="Website URL" [(ngModel)]="preSelectionData.website_url"
+            formControlName="websiteURL" [errorStateMatcher]="esMatcher"
+            pattern="^((https?|ftp|smtp):\/\/)?[a-zA-Z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$">
+          <mat-icon matSuffix color="warn"
+            *ngIf="(updateOrgInfoForm.controls.websiteURL.invalid && updateOrgInfoForm.controls.websiteURL.touched) || (updateOrgInfoForm.controls.websiteURL.invalid && showErrorIcon && !updateOrgInfoForm.controls.websiteURL.touched)">
+            error
+          </mat-icon>
+          <mat-error>
+            <span *ngIf="updateOrgInfoForm.controls.websiteURL.errors?.required">Website URL is
+              required.</span>
+            <span *ngIf="updateOrgInfoForm.controls.websiteURL.errors?.pattern">Please enter valid
+              website URL.</span>
+          </mat-error>
+        </mat-form-field>
+        <br>
+      </div>
+      <button type="submit" class="buttonfont selector">SAVE</button>
+    </form>
+  </div>
+</ion-content>

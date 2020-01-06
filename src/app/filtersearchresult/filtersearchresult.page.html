@@ -1,0 +1,241 @@
+<ion-toolbar class="new-background-color">
+  <!-- <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Filter</ion-title>
+    <ion-label (click)="clearFilterData()">CLEAR FILTERS</ion-label>
+  </ion-item> -->
+
+
+  <ion-row>
+    <!-- <ion-col (click)="closePage()" size="2" style="padding: 1% 0% 0% 5%;">
+      <ion-icon name="close" style=" color: #2b0c43;font-size: x-large;"></ion-icon>
+
+    </ion-col> -->
+    <ion-col size="6">
+      <ion-title style="color: #2b0c43">Filter</ion-title>
+
+    </ion-col>
+    <ion-col size="6" (click)="clearFilterData()">
+      <ion-label style="color: #2b0c43;float: right;padding: 2% 10% 0% 0%;">CLEAR FILTERS</ion-label>
+
+    </ion-col>
+  </ion-row>
+</ion-toolbar>
+
+
+<ion-content>
+  <ion-card class="cardMargins">
+    <ion-card-content>
+      <div class="formPadding">
+        <mat-form-field class="inputFields">
+          <input matInput placeholder="Keywords (Jobs title, Skill or Company)" clear-on-edit="true" type="text"
+            name="jobTitle" [(ngModel)]="jobTitle">
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <input matInput placeholder="Location" clear-on-edit="true" type="text" name="location"
+            [(ngModel)]="location">
+        </mat-form-field>
+
+        <ion-row>
+          <ion-col size="6">
+            <mat-form-field class="inputFields">
+              <mat-label>Min Experience</mat-label>
+              <mat-select [(ngModel)]="minExperience" (selectionChange)="onChangeMinExperience($event.value)">
+                <mat-option *ngFor="let item of min_experience" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ion-col>
+
+          <ion-col size="6">
+            <mat-form-field class="inputFields">
+              <mat-label>Max Experience</mat-label>
+              <mat-select [(ngModel)]="maxExperience">
+                <mat-option *ngFor="let item of max_experience" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col size="4">
+            <mat-form-field class="inputFields">
+              <mat-label>Currency</mat-label>
+              <mat-select [(ngModel)]="Currency_id">
+                <mat-option *ngFor="let item of currency_list" [value]="item.currency">
+                  {{item.currency}} </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ion-col>
+
+          <ion-col size="4">
+            <mat-form-field class="inputFields">
+              <mat-label>Min Salary</mat-label>
+              <mat-select [(ngModel)]="CtcFrom" (selectionChange)="onChangeMinSalary($event.value)">
+                <mat-option *ngFor="let item of annual_ctc_from" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ion-col>
+
+          <ion-col size="4">
+            <mat-form-field class="inputFields">
+              <mat-label>Max Salary</mat-label>
+              <mat-select [(ngModel)]="CtcTo">
+                <mat-option *ngFor="let item of annual_ctc_to" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+
+
+        <mat-form-field class="inputFields">
+          <mat-label>Disability Type</mat-label>
+          <mat-select [(ngModel)]="disability_id" multiple>
+            <mat-option *ngFor="let item of disability_list" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <mat-label>Industry</mat-label>
+          <mat-select [(ngModel)]="industry_id">
+            <mat-option *ngFor="let item of industry_list" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="inputFields">
+          <mat-label>Functional Area</mat-label>
+          <mat-select [(ngModel)]="functional_area_id">
+            <mat-option *ngFor="let item of functional_area_list" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="saveButtonPadding">
+          <button class="buttonfont" (click)="updateFilterDetail()">APPLY</button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <!-- <div class="inputDiv">
+    <!-- <ion-item class="inoItem">
+      <ion-label position="floating" class="blacklabel">Keywords (Jobs title, Skill or Company)</ion-label>
+      <ion-input class="headerNameCss" clear-on-edit="true" type="text" name="jobTitle" [(ngModel)]="jobTitle">
+      </ion-input>
+    </ion-item>
+    <ion-item class="inoItem">
+      <ion-label position="floating" class="blacklabel">Location</ion-label>
+      <ion-input class="headerNameCss" clear-on-edit="true" type="text" name="location" [(ngModel)]="location">
+      </ion-input>
+    </ion-item>
+    <br>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="headerNameCss">Min Experience:</ion-label>
+        <ion-select class="ionSelectBorder headerNameCss" [(ngModel)]="minExperience"
+          (ionChange)="onChangeMinExperience($event)" placeholder="Select Min Experience">
+          <ion-select-option *ngFor="let item of min_experience; let i = index" [value]="item">
+            {{item}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-label class="headerNameCss">Max Experience:</ion-label>
+        <ion-select class="ionSelectBorder headingLabel" [(ngModel)]="maxExperience"
+          (ionChange)="onChangeMaxExperience($event)" placeholder="Select Max Experience">
+          <ion-select-option *ngFor="let item of max_experience; let i = index"
+            [selected]="i == selectedMaxExperienceValue" [value]="item">
+            {{item}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <br> -->
+
+  <!-- 
+    <ion-row>
+      <ion-col size="4">
+        <ion-label class="headerNameCss">Currency:</ion-label>
+        <ion-select class="ionSelectBorder headerNameCss" [(ngModel)]="currency" (ionChange)="onChangeCurrency($event)"
+          placeholder="Currency">
+          <ion-select-option *ngFor="let item of currency_list; let i = index" [selected]="item.currency == 'INR'"
+            [value]="item">
+            {{item.currency}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+
+      <ion-col size="4">
+        <ion-label class="headerNameCss">Min Salary:</ion-label>
+        <ion-select class="ionSelectBorder headingLabel" [(ngModel)]="CtcFrom" (ionChange)="onChangeMinSalary($event)"
+          placeholder="Min Salary" placeholder="Min Salary">
+          <ion-select-option *ngFor="let item of annual_ctc_from; let i = index" [selected]="i == selectedCtcToIndex"
+            [value]="item">
+            {{item}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="4">
+        <ion-label class="headerNameCss">Max Salary:</ion-label>
+        <ion-select class="ionSelectBorder headingLabel" [(ngModel)]="CtcTo" (ionChange)="onChangeMaxSalary($event)"
+          placeholder="Max Salary">
+          <ion-select-option *ngFor="let item of annual_ctc_to; let i = index" [selected]="i == selectedCtcToIndex"
+            [value]="item">
+            {{item}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <br> -->
+
+  <!-- 
+    <ion-label class="headerNameCss">Disability Type:</ion-label>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-select class="ionSelectBorder" [(ngModel)]="Disability" multiple="true"
+          (ionChange)="onChangeDisability($event)" placeholder="Disability">
+          <ion-select-option *ngFor="let item of disability_list; let i = index"
+            [selected]="disability_id.indexOf(item.id) > -1" [value]="item">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-label class="headerNameCss">Industry:</ion-label>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-select class="ionSelectBorder" [(ngModel)]="Industry" (ionChange)="onChangeIndustry($event)"
+          placeholder="Industry">
+          <ion-select-option *ngFor="let item of industry_list; let i = index" [selected]="item.id == industry_id"
+            [value]="item">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-label class="headerNameCss">Functional Area:</ion-label>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-select class="ionSelectBorder" [(ngModel)]="FunctionalArea" (ionChange)="onChangeFunctionalArea($event)"
+          placeholder="Functional Area">
+          <ion-select-option *ngFor="let item of functional_area_list; let i = index"
+            [selected]="item.id == 'functional_area_id'" [value]="item">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <br> -->
+  <!-- </div>  -->
+
+</ion-content>

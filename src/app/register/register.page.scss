@@ -1,0 +1,64 @@
+ion-content.background{
+    --background: url(../../assets/img/backgroundlogin.png) 0 0/100% 70% no-repeat;
+}
+
+
+.cardMargins{
+    // height: 50% !important;
+    margin-top: 13%;
+    width: 94% !important;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 10px;
+   background:white;
+}
+
+.img{
+    height: 70vh;
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+
+.jobabilitylogo{
+  // height: 10%;
+  margin-top: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+  .passwordIcon{
+    font-size:2rem !important;
+    position: relative !important;
+    top: 22px !important;
+    margin: 0 auto !important;
+ }
+
+ .errorMsg{
+  color : red;
+}
+
+.backnavigation{
+  width:25px !important; 
+  height:15px; 
+  margin-top: 12.5px;
+}
+
+.passwordIcon{
+  font-size:2rem !important;
+  position: relative !important;
+  top: 22px !important;
+  margin: 0 auto !important;
+ }
+
+ .backArrow{
+  padding: 20%;
+}
+
+.registerLabel{
+  padding: 5%;
+  text-align: center;
+}
+

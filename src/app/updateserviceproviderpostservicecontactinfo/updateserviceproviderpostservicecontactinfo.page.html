@@ -1,0 +1,50 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style="color: #2b0c43;"></ion-icon>
+    <ion-title style="margin-left: 5%; color:#2b0c43;">Edit Contact Information</ion-title>
+  </ion-item>
+</ion-toolbar>
+
+<ion-content>
+  <ion-card class="cardMargins boxShadow">
+    <ion-card-content>
+        <form [formGroup]="updateContactInfoForm" (ngSubmit)="updateContactInfo(updateContactInfoForm.value)">
+          <ion-row>
+            <ion-col size="1">
+              <ion-checkbox formControlName="checkStatus" [(ngModel)]="checkStatus" class="checkBoxBorder">
+              </ion-checkbox>
+            </ion-col>
+            <ion-col size="11">
+              <ion-label class="headerNameCss"> Do not display this contact detail to Applicants</ion-label>
+            </ion-col>
+          </ion-row>
+
+          <label id="status">Status</label>
+          <mat-radio-group aria-label="status" class="radioButtonGroup"
+            [(ngModel)]="editServiceContactInformationDetails.Status" formControlName="status">
+            <mat-radio-button class="radioButton" value="1">Active</mat-radio-button>
+            <mat-radio-button class="radioButton" value="0">Inactive</mat-radio-button>
+          </mat-radio-group>
+
+          <button type="submit" class="buttonfont selector">SAVE</button>
+        </form>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-col size="4">
+      <ion-label style="margin-left: 6%;" style="color: #2b0c43;">Upload File:</ion-label>
+    </ion-col> -->
+  <!-- <ion-grid>
+      <ion-row>
+        <ion-col size="4" >
+          <ion-button class="uploadfilebtn button-outline" style="margin-left: 16%;" fill="outline"
+            (click)="uploadFile()">Choose file
+          </ion-button>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label style="color: #2b0c43;">{{fileName}}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+</ion-content>

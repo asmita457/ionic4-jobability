@@ -1,0 +1,278 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Job Detail</ion-title>
+    <ion-icon ios="ios-trash" md="md-trash" (click)="presentAlertForDelete()"></ion-icon>
+  </ion-item>
+</ion-toolbar>
+
+
+<ion-content>
+
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="12">
+            <ion-label class="profilePageHeaderStripSection1">JOB DETAIL</ion-label>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="">
+            <ion-label class="headingLabel">Job Title:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Job Description:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.job_desciption}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Disability Accepted:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.disability_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Work Experience:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.min_experience}} - {{employerJobDetailArray.max_experience}} years</ion-label>
+            <br>
+            <div *ngIf="hideSalary">
+            <ion-label class="headingLabel">Annual Salary:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.annual_ctc_to}} - {{employerJobDetailArray.annual_ctc_to}}</ion-label>
+            <br></div>
+            <!-- <ion-label class="headingLabel">Hide Salary from Jobseekers:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.hide_salary}}</ion-label>
+            <br> -->
+            <ion-label class="headingLabel">Number of Vacancies:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.number_of_vacancies}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Last date for Applying:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.expiry_date}}</ion-label>
+          </ion-col>
+        
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="12">
+            <ion-label class="profilePageHeaderStripSection1">JOB LOCATION</ion-label>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="headingLabel">Job in Country:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.country_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Job District/City:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.location_name}}</ion-label>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="12">
+            <ion-label class="profilePageHeaderStripSection1">JOB REQUIREMENT</ion-label>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="headingLabel">Industry:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.industry_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Functional Area:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.functional_area}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Job Role:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.job_role}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Qualification:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.qualification_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Skills:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.key_skills}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Reference Code:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.reference_code}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Candidate Profile:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.candidate_profile}}</ion-label>
+            <br>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="12">
+            <ion-label class="profilePageHeaderStripSection1">RECEIVE RESPONSES ON: EMAIL/WALK-IN</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid>
+        <ion-row>
+
+            <ion-col size="12" *ngIf="manageResponsesEmail">    
+                <ion-label class="headingLabel">Email1:</ion-label>
+                <br>
+                <ion-label class="contentInfo">{{employerJobDetailArray.email}}</ion-label>
+                <br>
+                <ion-label class="headingLabel">Email2:</ion-label>
+                <br>
+                <ion-label class="contentInfo">{{employerJobDetailArray.business_email}}</ion-label>
+                <br>
+                <ion-label class="headingLabel">display this email Id to applicant:</ion-label>
+                <br>
+                <ion-label class="contentInfo">{{applicantDisaply}}</ion-label>
+                <br>
+              </ion-col>
+
+          <ion-col size="12" *ngIf="manageResponsesWalkin">
+
+            <ion-label class="headingLabel">Walk-In</ion-label><br>
+
+            <ion-label class="headingLabel">From Date:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.walkin_from_date}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">To Date:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.walkin_to_date}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Start Time:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.walkin_from_time}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">End Time:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.walkin_to_time}}</ion-label>
+            <br>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="12">
+            <ion-label class="profilePageHeaderStripSection1">CONTACT DETAIL</ion-label>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" *ngIf="contactDetailShow">
+
+            <ion-label class="headingLabel">Company Name:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.company_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">About Company:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.company_description}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Company Website:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.company_website}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Contact Person:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.person_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Address:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.company_address}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Country:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.country_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">State/Province:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.state_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">District/City:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.city_name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">ZIP/PIN Code:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.company_pincode}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Mobile:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.mobile}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Phone:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{employerJobDetailArray.phone}}</ion-label>
+          </ion-col>
+
+          <ion-col size="12" *ngIf="contactDetailHide">
+            <ion-label>The employer has not shared their contact details</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

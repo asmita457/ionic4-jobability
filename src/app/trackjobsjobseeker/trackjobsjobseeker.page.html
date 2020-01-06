@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item lines="none" class="new-background-color">
+      <ion-title class="headerNameCss">
+        Track Jobs
+      </ion-title>
+      <ion-icon class="headerNameCss" name="notifications" (click)="navigateToNotification()" aria-label="notifications button" alt="notifications button"></ion-icon>
+      <ion-badge *ngIf="badgecount != 0" id="notifications-badge" color="danger">{{badgecount}}</ion-badge>
+    </ion-item>
+  </ion-toolbar>
+  <div class="divPadding">
+    <ion-row>
+      <ion-col size="12">
+        <ion-label class="jobNameCss">{{track_job_list_length}} Jobs</ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-header>
+<ion-content>
+
+  <div *ngIf="trackJobData">
+    <ion-card *ngFor="let item of track_job_list;" class="cardMargins">
+      <ion-card-content>
+        <ion-list>
+          <ion-row>
+            <ion-col size="10" (click)="jobDescription(item.id)">
+              <ion-row>
+                <!-- <ion-col size="11"> -->
+                <ion-label class="jobNameCss">{{item.name}}</ion-label>
+                <!-- </ion-col> -->
+              </ion-row>
+              <ion-row>
+                <ion-label class="companyNameCss">{{item.company_name}}
+                </ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">
+                  <ion-img src="../../assets/img/experience.png" class="experienceAndLocationPng">
+                  </ion-img>
+                </ion-col>
+                <ion-col size="11">
+                  <ion-label>{{item.min_experience}} - {{item.max_experience}} years</ion-label>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="1">
+                  <ion-img src="../../assets/img/location.png" class="experienceAndLocationPng">
+                  </ion-img>
+                </ion-col>
+                <ion-col size="11">
+                  <ion-label>{{item.location_name}}</ion-label>
+                  <br>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-label><i>Posted: {{item.posted_age}}</i></ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-label><b>{{item.status}}</b></ion-label>
+              </ion-row>
+
+            </ion-col>
+            <!-- <ion-col size="2">
+              <ion-icon ios="ios-heart" md="md-heart" class="iconcss" style="float:right;color:#2b0c43;"></ion-icon>
+            </ion-col> -->
+
+          </ion-row>
+
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!trackJobData">
+    <h5 align="center">No jobs for tracking</h5>
+  </div>
+
+  <br>
+  <ion-infinite-scroll [disabled]="!moreDataAvailable" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <!-- 
+  <ion-card style="height:8%" class="cardMargins">
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="12">
+          <ion-label  class="headerNameCss">20 Job Application</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let item of trackJobsArray; let j = index" class="cardMargins">
+    <ion-card-content >
+      <ion-list >
+        <ion-row (click)="jobDescription()" >
+          <ion-col size="10">
+          <ion-label style="font-size: 18px;color:black;">{{item.title}}</ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-icon name="heart-empty" style="margin-top: 6px; height: 20px; width : 20px; "></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+        <ion-label style="font-size: 16px;color:black; padding :5px">{{item.company}}</ion-label></ion-row>
+        <ion-row style="padding:5px">
+        <ion-img src="../../assets/img/experience.png"  style="width:15px; height:15px;;"></ion-img>&nbsp;&nbsp;
+        <ion-label style="font-size: 15px;color:black; margin-top:-1px;">{{item.minexp}} - </ion-label>
+        <ion-label style="font-size: 15px;color:black; margin-top:-1px">{{item.maxexp}} years</ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ion-img src="../../assets/img/location.png"  style="width:15px; height:15px; "></ion-img>&nbsp;&nbsp;
+        <ion-label style="font-size: 15px;color:black ; margin-top:-3px">{{item.location}}</ion-label><br>
+      </ion-row>
+      <ion-item style="--min-height:0px"></ion-item>
+      <ion-row>
+        <ion-col size="9">
+        <ion-label style="font-size: 15px;color:black;">Resume Viewed by Employer</ion-label>
+      </ion-col>
+        <ion-col size="3">
+        <ion-label style="font-size: 15px;color:black;">3 hrs ago</ion-label>
+      </ion-col>
+      </ion-row>
+         </ion-list>
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>

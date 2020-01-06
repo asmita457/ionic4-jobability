@@ -1,0 +1,71 @@
+<ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+        <ion-menu-button class="headerNameCss"></ion-menu-button>
+    </ion-buttons>
+    <ion-row>
+        <ion-col size="8">
+            <!-- <ion-title style="margin-left: 5%; color: #2b0c43;padding: 7% 0% 0% 0%;">Job Details</ion-title> -->
+            <ion-title class="headerTitle">
+                Success Stories
+            </ion-title>
+        </ion-col>
+
+        <ion-col size="2" class="ionCol">
+            <ion-icon name="notifications" class="iconcss" style="color: #2b0c43 !important; margin-left: -25%;"
+                (click)="navigateToNotification()" aria-label="notifications button" alt="notifications button"></ion-icon>
+            <!-- <ion-icon class="headerNameCss" name="notifications" (click)="navigateToNotification()"></ion-icon> -->
+            <ion-badge *ngIf="badgecount != 0" id="notifications-badge-success" class="notifications-badge-success"
+                color="danger">{{badgecount}}</ion-badge>
+        </ion-col>
+
+        <ion-col size="2" class="ionCol" (click)="navToSuccessStories()">
+            <ion-icon aria-label="Add Success Stories" style="color: rgba(var(--ion-text-color-rgb,43,12,67),.54);" class="iconcss" name="md-add-circle">
+            </ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-toolbar>
+
+<ion-content>
+    <div *ngIf="successStoriesList.length !=0">
+        <ion-card *ngFor="let item of successStoriesList">
+            <ion-card-header class="profileCardHeader" *ngIf="uacc_id == item.partner_id">
+                <ion-grid class="cardPadding">
+                    <ion-row class="profilePageHeaderrow">
+                        <ion-col size="10">
+                        </ion-col>
+                        <ion-col size="2">
+                            <ion-icon class="deleteStory" ios="ios-create" md="md-trash"
+                                (click)="deleteSuccessStoryConfirm(item.resource_id)"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-header>
+            <ion-card-content><br>
+                <ion-avatar class="avatar-border-color">
+                    <img aria-label="profile pic" src="{{item.image_path}}">
+                </ion-avatar><br>
+                <div class="centerAlign">
+                    <ion-label class="cardHeading">{{item.name}}</ion-label>
+                </div>
+                <br>
+                <div class="centerAlign">
+                    <div style="color: #4d4d4d"
+                        [innerHTML]="item.brief.length > 200 ? item.brief.substring (0,200)+'...':item.brief "></div>
+                </div>
+                <br>
+                <div class="centerAlign" (click)="navToSuccessStoryDetails(item.resource_id)">
+                    <ion-label class="labelReadMore">READ MORE</ion-label>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        <br>
+        <ion-infinite-scroll [disabled]="!moreDataAvailable" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+    <div *ngIf="successStoriesList.length == 0">
+        <h5 align="center">No Success Storys</h5>
+    </div>
+
+</ion-content>

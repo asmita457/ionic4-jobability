@@ -1,0 +1,76 @@
+.cardcss{
+    margin-top: -38%;
+    height: 30% !important;
+    line-height: 80px;
+    padding: 5%;
+}
+
+.searchbar-input {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.searchbar-search-icon
+ { 
+     display:none; 
+     width:0;
+      height:0;
+    
+    }
+    
+
+    .postjobbutton{
+        border: 0.5px solid black;
+        border-radius: 4px;
+        padding: 5px !important;
+        background:#2b0c43;
+        color: white;
+        margin-top:5%;
+        height:52px;
+        width:60% !important;
+        margin-left: 20%;
+        margin-right:20%;
+        font-size: 15px;
+      }
+// .cardcss{
+//     background:white;
+//     width: 96%;
+//     border-radius: 4px;
+//     height:11%;
+//     margin-top:-29%;
+//     margin-right: 2%;
+//     margin-left: 2%;
+//     // margin-top: 15%;
+// }
+.searchbar-input.sc-ion-searchbar-md {
+    line-height: 60px !important;
+    padding: 5px !important;
+    border-radius: 4px !important;
+    font-size: 18px !important;
+    border-radius: 5px;
+    }
+
+  .searchbar-search-icon.sc-ion-searchbar-md {
+    width: 0px !important;
+    height: 0px !important;
+}
+.searchcard{
+    background: white;
+  }
+
+  .labelFontSize{
+    color:#2b0c43;
+    font-size: 15px;
+  }
+  .countFontSize{
+    font-size: 18px;
+    color:#2b0c43;
+    padding-right: 5%;
+  }
+  .bacgroundColor{
+    --background: #f6f6ee;
+  }
+  .divPadding{
+    padding: 2% 5% 2% 5%;
+    border-bottom: 1px solid #807b7b5e;
+  }

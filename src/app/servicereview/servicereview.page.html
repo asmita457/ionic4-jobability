@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-item lines="none" class="new-background-color">
+      <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+      <ion-title *ngIf="showCommnet" style="margin-left: 5%; color: #2b0c43">Comment</ion-title>
+      <ion-title *ngIf="!showCommnet" style="margin-left: 5%; color: #2b0c43">Rate for Service</ion-title>
+
+    </ion-item>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div *ngIf="showCommnet" class="divCenter" style="height: 100% !important;">
+    <div class="divCenter" style="height: 70% !important;">
+
+      <ion-card class="cardMargins">
+        <ion-card-header class="profileCardHeader">
+          <!-- <ion-grid class="cardPadding"> -->
+          <!-- <ion-label class="cardHeadings">Comment:</ion-label>
+          <br>
+          <br>
+          <ion-item>
+            <ion-textarea placeholder="Enter more information here..."></ion-textarea>
+          </ion-item> -->
+
+          <ion-item lines="none">
+            <ion-label class="headerNameCss" position="floating"
+              [ngClass]="{'redlabel' : showCommentErrorMsg == true, 'blacklabel' : showCommentErrorMsg == false}">
+              Comment</ion-label>
+            <ion-textarea rows="6" [(ngModel)]="Comment" (ionChange)="validationForComment()" required></ion-textarea>
+          </ion-item>
+          <br *ngIf="showCommentErrorMsg">
+          <ion-item>
+            <p *ngIf="showCommentErrorMsg" class="redlabel">Please enter comment</p>
+          </ion-item>
+          <!-- </ion-grid> -->
+        </ion-card-header>
+
+
+      </ion-card>
+      <br><br>
+      <div class="saveButtonPadding" *ngIf="showCommitButton">
+        <button class="buttonfont" (click)="Submit()">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!showCommnet" class="divCenter">
+    <ion-card class="cardMargins">
+      <ion-card-header class="profileCardHeader" style="padding: 2% !important; font-size: large;">
+        <!-- <ion-label > -->
+        <div text-center>Rate Service
+        </div>
+        <!-- </ion-label> -->
+      </ion-card-header>
+      <ion-card-content style="padding-top: 5% !important;">
+        <div text-center>
+          <ion-icon name="star" *ngFor="let num of [1,2,3,4,5]" (click)="rate(num)" [ngStyle]="{'color':getColor(num)}"
+            style="font-size: -webkit-xxx-large;"></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <br>
+    <div class="saveButtonPadding" *ngIf="ratingButton">
+      <button class="buttonfont" (click)="submitRating()">Submit</button>
+    </div>
+  </div>
+</ion-content>

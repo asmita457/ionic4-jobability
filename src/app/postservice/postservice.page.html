@@ -1,0 +1,132 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Post Service</ion-title>
+  </ion-item>
+</ion-toolbar>
+
+<ion-content>
+
+  <div class="formPadding">
+    <form [formGroup]="postServiceDetailsForm" (ngSubmit)="postServiceDetails(postServiceDetailsForm.value)">
+      <mat-label class="header">Service Details</mat-label>
+      <mat-form-field class="inputFields">
+        <input matInput placeholder="Service Title" formControlName="serviceTitle" [errorStateMatcher]="esMatcher"
+          pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$">
+        <mat-icon matSuffix color="warn"
+          *ngIf="(postServiceDetailsForm.controls.serviceTitle.invalid && postServiceDetailsForm.controls.serviceTitle.touched) || (postServiceDetailsForm.controls.serviceTitle.invalid && showErrorIcon && !postServiceDetailsForm.controls.serviceTitle.touched)">
+          error
+        </mat-icon>
+        <mat-error>
+          <span *ngIf="postServiceDetailsForm.controls.serviceTitle.errors?.required">Service title is required.</span>
+          <span *ngIf="postServiceDetailsForm.controls.serviceTitle.errors?.pattern">Please enter valid service
+            title.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="inputFields">
+        <mat-label>Category Type</mat-label>
+        <mat-select formControlName="serviceoffered" [errorStateMatcher]="esMatcher" multiple>
+          <mat-option *ngFor="let item of Serviceofferedlist" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="postServiceDetailsForm.controls.serviceoffered.errors?.required">Category type is
+            required.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="inputFields">
+        <mat-label>Disability Type</mat-label>
+        <mat-select formControlName="disability" [errorStateMatcher]="esMatcher" multiple>
+          <mat-option *ngFor="let item of disabilitylist" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="postServiceDetailsForm.controls.disability.errors?.required">Please select at least one
+            disability type.</span>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="inputFields">
+        <input matInput placeholder="Brief" formControlName="brief" pattern=".*[^ ].*">
+        <mat-icon matSuffix color="warn"
+          *ngIf="(postServiceDetailsForm.controls.brief.invalid && postServiceDetailsForm.controls.brief.touched) || (postServiceDetailsForm.controls.brief.invalid && showErrorIcon && !postServiceDetailsForm.controls.brief.touched)">
+          error
+        </mat-icon>
+        <mat-error>
+          <span *ngIf="postServiceDetailsForm.controls.brief.errors?.required">Brief is required.</span>
+          <span *ngIf="postServiceDetailsForm.controls.brief.errors?.pattern">Please enter valid
+            brief.</span>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="inputFields">
+        <input matInput placeholder="Description" formControlName="description" [errorStateMatcher]="esMatcher"
+          pattern=".*[^ ].*">
+        <mat-icon matSuffix color="warn"
+          *ngIf="(postServiceDetailsForm.controls.description.invalid && postServiceDetailsForm.controls.description.touched) || (postServiceDetailsForm.controls.description.invalid && showErrorIcon && !postServiceDetailsForm.controls.description.touched)">
+          error
+        </mat-icon>
+        <mat-error>
+          <span *ngIf="postServiceDetailsForm.controls.description.errors?.required">Description is required.</span>
+          <span *ngIf="postServiceDetailsForm.controls.description.errors?.pattern">Please enter valid
+            description.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-label class="header">Service Location</mat-label>
+      <mat-form-field class="inputFields">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country" [errorStateMatcher]="esMatcher"
+          (selectionChange)="selectedCountryValue($event.value)">
+          <mat-option *ngFor="let item of countryList" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="postServiceDetailsForm.controls.country.errors?.required">Country is
+            required.</span>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="inputFields">
+        <mat-label> Preferred State/City</mat-label>
+        <mat-select #shoes formControlName="preferredStateCity" [errorStateMatcher]="esMatcher" multiple>
+          <mat-option  #shoe *ngFor="let item of stateCityList" [disabled]="selectedCount >= maxCount && !shoe.selected" (click)="updateSelectedCount(shoes.value.length)" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="postServiceDetailsForm.controls.preferredStateCity.errors?.required">Preferred state / city is
+            required.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-label class="header">Contact Information</mat-label>
+      <ion-row>
+        <ion-col size="1">
+          <ion-checkbox formControlName="showDetailsToApplicants"  class="checkBoxBorder" [(ngModel)]="showDetailsToApplicants">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col size="11">
+          <ion-label class="headerNameCss">Do not display this contact detail to Applicants.</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <label id="status">Status</label>
+      <mat-radio-group aria-label="status" class="radioButtonGroup" formControlName="status"
+        [(ngModel)]="SelectedStatus">
+        <mat-radio-button class="radioButton" value="1">Active</mat-radio-button>
+        <mat-radio-button class="radioButton" value="0">Inactive</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <button type="submit" class="buttonfont selector">SAVE</button>
+    </form>
+  </div>
+</ion-content>

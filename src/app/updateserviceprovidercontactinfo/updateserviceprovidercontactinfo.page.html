@@ -1,0 +1,182 @@
+<ion-toolbar class="new-background-color">
+    <ion-item lines="none" class="new-background-color">
+        <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+        <ion-title style="margin-left: 5%; color: #2b0c43">Contact Information</ion-title>
+    </ion-item>
+</ion-toolbar>
+<ion-content>
+    <ion-card class="cardMargins">
+        <ion-card-content>
+            <div class="formPadding">
+                <form [formGroup]="updateContactDetailsForm"
+                    (ngSubmit)="updateServiceProviderContactDetail(updateContactDetailsForm.value)">
+                    <mat-form-field class="inputFields">
+                        <input matInput placeholder="Name" [(ngModel)]="dataArray.first_name" formControlName="name"
+                            [errorStateMatcher]="esMatcher" pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$">
+                        <mat-icon matSuffix color="warn"
+                            *ngIf="(updateContactDetailsForm.controls.name.invalid && updateContactDetailsForm.controls.name.touched) || (updateContactDetailsForm.controls.name.invalid && showErrorIcon && !updateContactDetailsForm.controls.name.touched)">
+                            error
+                        </mat-icon>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.name.errors?.required">Name is
+                                required.</span>
+                            <span *ngIf="updateContactDetailsForm.controls.name.errors?.pattern">Please enter valid
+                                name.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <input matInput placeholder="Designation" [(ngModel)]="dataArray.designation"
+                            formControlName="designation" [errorStateMatcher]="esMatcher"
+                            pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z. ]+$">
+                        <mat-icon matSuffix color="warn"
+                            *ngIf="(updateContactDetailsForm.controls.designation.invalid && updateContactDetailsForm.controls.designation.touched) || (updateContactDetailsForm.controls.designation.invalid && showErrorIcon && !updateContactDetailsForm.controls.designation.touched)">
+                            error
+                        </mat-icon>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.designation.errors?.required">Designation is
+                                required.</span>
+                            <span *ngIf="updateContactDetailsForm.controls.designation.errors?.pattern">Please enter
+                                valid
+                                designation.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <input matInput placeholder="Email" [(ngModel)]="dataArray.email" formControlName="email"
+                            [errorStateMatcher]="esMatcher" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+                        <mat-icon matSuffix color="warn"
+                            *ngIf="(updateContactDetailsForm.controls.email.invalid && updateContactDetailsForm.controls.email.touched) || (updateContactDetailsForm.controls.email.invalid && showErrorIcon && !updateContactDetailsForm.controls.email.touched)">
+                            error
+                        </mat-icon>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.email.errors?.required">Email is
+                                required.</span>
+                            <span *ngIf="updateContactDetailsForm.controls.email.errors?.pattern">Please enter valid
+                                email
+                                address.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <input matInput placeholder="Alternative Email(optional)" [(ngModel)]="dataArray.business_email"
+                            formControlName="businessEmail" [errorStateMatcher]="esMatcher"
+                            pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+                        <mat-icon matSuffix color="warn"
+                            *ngIf="(updateContactDetailsForm.controls.businessEmail.invalid && updateContactDetailsForm.controls.businessEmail.touched) || (updateContactDetailsForm.controls.businessEmail.invalid && showErrorIcon && !updateContactDetailsForm.controls.businessEmail.touched)">
+                            error
+                        </mat-icon>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.businessEmail.errors?.pattern">Please enter
+                                valid
+                                alternative email
+                                address.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <input type="tel" matInput placeholder="Phone(optional)" [(ngModel)]="dataArray.phone"
+                            formControlName="phone" [errorStateMatcher]="esMatcher">
+                        <mat-icon matSuffix color="warn"
+                            *ngIf="(updateContactDetailsForm.controls.phone.invalid && updateContactDetailsForm.controls.phone.touched) || (updateContactDetailsForm.controls.phone.invalid  && showErrorIcon && !updateContactDetailsForm.controls.phone.touched)">
+                            error</mat-icon>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.phone.errors?.maxlength">Please
+                                enter valid phone number.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <input type="tel" matInput placeholder="Mobile" [(ngModel)]="dataArray.mobile"
+                            formControlName="mobile" [errorStateMatcher]="esMatcher" pattern="^[0-9]{10}$">
+                        <mat-icon matSuffix color="warn"
+                            *ngIf="(updateContactDetailsForm.controls.mobile.invalid && updateContactDetailsForm.controls.mobile.touched) || (updateContactDetailsForm.controls.mobile.invalid  && showErrorIcon && !updateContactDetailsForm.controls.mobile.touched)">
+                            error</mat-icon>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.mobile.errors?.required">Mobile number is
+                                required.</span>
+                            <span
+                                *ngIf="updateContactDetailsForm.controls.mobile.errors?.minlength || updateContactDetailsForm.controls.mobile.errors?.maxlength">Please
+                                enter valid mobile number.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <textarea matInput placeholder="Address" [(ngModel)]="dataArray.address"
+                            formControlName="address" [errorStateMatcher]="esMatcher"
+                            pattern=".*[^ ].*"></textarea>
+                        <mat-icon matSuffix color="warn"
+                            *ngIf="(updateContactDetailsForm.controls.address.invalid && updateContactDetailsForm.controls.address.touched) || (updateContactDetailsForm.controls.address.invalid && showErrorIcon && !updateContactDetailsForm.controls.address.touched)">
+                            error
+                        </mat-icon>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.address.errors?.required">Address is
+                                required.</span>
+                            <span *ngIf="updateContactDetailsForm.controls.address.errors?.pattern">Please enter valid
+                                address.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <mat-label>Country</mat-label>
+                        <mat-select formControlName="country" [errorStateMatcher]="esMatcher"
+                            (selectionChange)="selectedCountryValue($event.value)" [(ngModel)]="dataArray.country">
+                            <mat-option *ngFor="let item of countryArrayFromLocalStorage" [value]="item.id">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.country.errors?.required">Country is
+                                required.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <mat-label>State</mat-label>
+                        <mat-select formControlName="state" [errorStateMatcher]="esMatcher"
+                            (selectionChange)="selectedStatesValue($event.value)" [(ngModel)]="dataArray.state">
+                            <mat-option *ngFor="let item of cityAndStateArrayFromLocalStorage" [value]="item.id">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.state.errors?.required">State is
+                                required.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <mat-label>City</mat-label>
+                        <mat-select formControlName="city" [errorStateMatcher]="esMatcher" [(ngModel)]="dataArray.city">
+                            <mat-option *ngFor="let item of cityNameArray" [value]="item.id">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.city.errors?.required">City is
+                                required.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputFields">
+                        <input type="tel" matInput placeholder="ZIP / PIN Code" [(ngModel)]="dataArray.zip_code"
+                            formControlName="zipCode" [errorStateMatcher]="esMatcher">
+                        <mat-icon matSuffix color="warn"
+                            *ngIf="(updateContactDetailsForm.controls.zipCode.invalid && updateContactDetailsForm.controls.zipCode.touched) || (updateContactDetailsForm.controls.zipCode.invalid  && showErrorIcon && !updateContactDetailsForm.controls.zipCode.touched)">
+                            error</mat-icon>
+                        <mat-error>
+                            <span *ngIf="updateContactDetailsForm.controls.zipCode.errors?.required">Zip / pin code is
+                                required.</span>
+                            <span
+                                *ngIf="updateContactDetailsForm.controls.zipCode.errors?.minlength || updateContactDetailsForm.controls.zipCode.errors?.maxlength">Please
+                                enter valid zip / pin code.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <button type="submit" class="buttonfont selector loginButton">SAVE</button>
+
+                </form>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

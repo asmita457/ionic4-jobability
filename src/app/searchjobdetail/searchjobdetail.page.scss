@@ -1,0 +1,71 @@
+.backnavigation{
+    width:25px; 
+    height:15px; 
+    margin-top: 12.5px;
+  }
+  .searchcard{
+    background: white;
+  }
+
+  .contentcss{
+    font-size: 15px;
+    color:black;
+     padding :5px;
+  }
+
+  .ionimgcss{
+    width:15px; 
+    height:15px;
+  }
+
+  .cardContents{
+    font-size: 16px;
+    color:#2b0c43; 
+  
+  }
+
+  .cardHeadings{
+    font-size: 16px;
+    color:#2b0c43; 
+  font-weight:bold;
+  }
+
+  .cardmargincss{
+    margin-bottom: 5px; 
+    border-radius: 0px;
+    width:100%;
+    -webkit-margin-start: 0px;
+    margin-top:15px;
+  }
+
+  .headingLabel{
+    color:#2b0c43;
+    font-size:12px;
+    font-weight:bold;
+    }
+    
+    .contentInfo{
+    font-size:15px;
+    color:#2b0c43;
+    display: inline-block;
+    }
+
+    .bottomposition{
+      position: fixed;
+      left: 0;
+      bottom: 0px;
+      right: 0;
+  }
+
+  ion-fab{
+    ion-fab-button{
+            --background: #2b0c43 !important;
+      }
+  }
+
+  
+  .headerTitle{
+    font-size: small;
+    color: #2b0c43;
+  }
+  

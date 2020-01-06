@@ -1,0 +1,162 @@
+<ion-toolbar class="new-background-color">
+  <!-- <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Post Job</ion-title>
+  </ion-item> -->
+
+<ion-row>
+    <ion-col size="2" (click)="goBack()">
+        <ion-img src="../../assets/img/backnavigation.png" style="padding: 20% 25% 25% 25%;">
+        </ion-img>
+      </ion-col>
+  <ion-col size="10">
+    <ion-title class="titlecss" style="margin-top:4px">Post Job</ion-title>
+  </ion-col>
+</ion-row>
+</ion-toolbar>
+
+<ion-content>
+    <div class="inputDiv">
+
+  <h5 align="center" style="color:#2b0c43">Job Requirements</h5>
+  <ion-item class="inoItem headerNameCss" lines="none"  style="margin-top:5%">
+      <ion-grid fixed>
+              <ion-row>
+                      <ion-col size="12">
+                        <ion-label class="headerNameCss" [ngClass]="{'redlabel' : isIndustrySelected == true, 'blacklabel' : isIndustrySelected == false}">
+                        Industry Type:
+                      </ion-label>
+                      </ion-col>
+              </ion-row>
+      </ion-grid>
+  </ion-item>
+  
+    <ion-select class="headerNameCss" [(ngModel)]="industryId"  style=" border-bottom: 1px solid lightgray" placeholder="Select Industry Type" (ionChange)="selectedIndustryTypeValue($event)">
+      <ion-select-option *ngFor="let item of industryArray;" [value]="item.id">
+        {{item.name}}</ion-select-option>
+    </ion-select>
+
+
+    <ion-item class="inoItem headerNameCss" lines="none">
+        <ion-grid fixed>
+                <ion-row>
+                        <ion-col size="12">
+                          <ion-label class="headerNameCss" [ngClass]="{'redlabel' : isFunctionalAreaSelected == true, 'blacklabel' : isFunctionalAreaSelected == false}">
+                              Functional Area:
+                        </ion-label>
+                        </ion-col>
+                </ion-row>
+        </ion-grid>
+    </ion-item>
+    
+      <ion-select class="headerNameCss" [(ngModel)]="functionalAreaId"  style=" border-bottom: 1px solid lightgray" placeholder="Functional Area" (ionChange)="onFunctionalAreaSelect($event)">
+        <ion-select-option *ngFor="let item of functionalArea;" [value]="item.id">
+          {{item.name}}</ion-select-option>
+      </ion-select>
+  
+    <ion-item class="headerNameCss inoItem">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="10">
+              <ion-label position="floating" [ngClass]="{'redlabel' : showJobRoleErrorMsg == true, 'blacklabel' : showJobRoleErrorMsg == false}">
+                  Job Role
+              </ion-label>
+              <ion-input type="text" name="jobrole" [(ngModel)]="jobrole" (ionChange)="employeeJobRoleValidator()" required></ion-input>
+            </ion-col>
+            <ion-col size="2" *ngIf="showJobRoleErrorMsg">
+              <ion-img class="errorimg" src="assets/img/error.png">
+              </ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-row>
+        <ion-col size="10">
+          <p class="errorMsg " *ngIf="showJobRoleErrorMsg">{{jobRoleErrorMsg}}</p>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-item class="inoItem headerNameCss" lines="none">
+          <ion-grid fixed>
+                  <ion-row>
+                          <ion-col size="12">
+                            <ion-label class="headerNameCss" [ngClass]="{'redlabel' : isQualificationSelected == true, 'blacklabel' : isQualificationSelected == false}">
+                                Qualification:
+                          </ion-label>
+                          </ion-col>
+                  </ion-row>
+          </ion-grid>
+      </ion-item>
+      
+        <ion-select class="headerNameCss" [(ngModel)]="qualificationId"  multiple="true" style=" border-bottom: 1px solid lightgray" placeholder="Select Qualification" (ionChange)="selectedQualificationTypeValue($event)">
+          <ion-select-option *ngFor="let item of qualificationArray;" [value]="item.id">
+            {{item.name}}</ion-select-option>
+        </ion-select>
+
+  
+
+        <ion-item class="headerNameCss inoItem">
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="10">
+                  <ion-label position="floating" [ngClass]="{'redlabel' : showSkillsErrorMsg == true, 'blacklabel' : showSkillsErrorMsg == false}">
+                      Skills (Enter your skills separated by comma)
+                  </ion-label>
+                  <ion-input type="text" name="skills" [(ngModel)]="skills" (ionChange)="employeeSkillsValidator()" required
+                    ></ion-input>
+                </ion-col>
+                <ion-col size="2" *ngIf="showSkillsErrorMsg">
+                  <ion-img class="errorimg" src="assets/img/error.png">
+                  </ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-row>
+            <ion-col size="10">
+              <p class="errorMsg " *ngIf="showSkillsErrorMsg">{{skillsErrorMsg}}</p>
+            </ion-col>
+          </ion-row>
+
+
+          <ion-item class="headerNameCss inoItem">
+            <ion-grid fixed>
+            <ion-row>
+                <ion-col size="12">
+                  <ion-label position="floating" >
+                    Reference Code (Optional)
+                  </ion-label>
+                  <ion-input type="text" name="referancecode" [(ngModel)]="referancecode"
+                   ></ion-input>
+                </ion-col>
+                <ion-col size="2">
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+              </ion-item>
+
+    
+
+    <ion-item class="inoItem headerNameCss">
+      <ion-grid fixed>
+      <ion-row>      
+            <ion-col size="10">
+            <ion-label position="floating" >
+              Candidate Profile (Optional)
+            </ion-label>
+            <ion-input type="text" name="candidateprofile" [(ngModel)]="candidateprofile" ></ion-input>
+          </ion-col>
+          <ion-col size="2">
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    </div>
+  <div class="saveButtonPadding">
+    <button class="buttonfont" (click)="nextPage()">CONTINUE</button>
+  </div>
+</ion-content>

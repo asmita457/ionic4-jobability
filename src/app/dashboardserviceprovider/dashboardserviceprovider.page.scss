@@ -1,0 +1,46 @@
+.postjobbutton{
+  border: 0.5px solid black;
+  // border-radius: 4px;
+  background:#2b0c43;
+  color: white;
+  height:52px;
+  width:100% !important;
+  font-size: 15px;
+  }
+  
+  .searchcard{
+  background: white;
+  margin-top: -34px;
+  height: 60px;
+  }
+ 
+ .SearchInput{
+  font-size: 18px !important;
+  overflow-y: scroll !important;
+  border-bottom: 1px solid #c8c7cc !important;
+  width: 90% !important;
+  margin-left: 5% !important;
+ }
+ .bottomposition{
+  position: fixed;
+  left: 0;
+  bottom: 0px;
+  right: 0;
+ }
+ 
+ .labelFontSize{
+  color:#2b0c43;
+  font-size: 15px;
+ }
+ .countFontSize{
+  font-size: 18px;
+  color:#2b0c43;
+  padding-right: 5%;
+ }
+ .divPadding{
+  padding: 2% 5% 2% 5%;
+  border-bottom: 1px solid #807b7b5e;
+ }
+ .bacgroundColor{
+  --background: #f6f6ee;
+ }

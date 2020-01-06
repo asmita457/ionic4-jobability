@@ -1,0 +1,155 @@
+<!-- <ion-header> -->
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Create Success Story</ion-title>
+  </ion-item>
+</ion-toolbar>
+<!-- </ion-header> -->
+
+<ion-content>
+
+  <ion-card class="cardMargins">
+    <ion-card-content>
+      <div class="formPadding">
+        <form [formGroup]="addSuccessstoriesForm" (ngSubmit)="addSuccessStories(addSuccessstoriesForm.value)">
+          <div class="addCameraBacground" (click)="presentActionSheet()">
+            <ion-icon class="cameraIcon" ios="ios-camera" md="md-camera"></ion-icon>
+          </div>
+
+          <ion-avatar class="avatar-border-color">
+            <ion-img class="profilePic" [src]="imageData"></ion-img>
+          </ion-avatar>
+          <br>
+          <br>
+          <p class="errorMsg" style="text-align: center;" *ngIf="this.choosedFileName == 'fileNotSelected'">Please
+            upload
+            image</p>
+
+
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Title" formControlName="title" pattern=".*[^ ].*">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(addSuccessstoriesForm.controls.title.invalid && addSuccessstoriesForm.controls.title.touched) || (addSuccessstoriesForm.controls.title.invalid && showErrorIcon && !addSuccessstoriesForm.controls.title.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="addSuccessstoriesForm.controls.title.errors?.required">Title is required.</span>
+              <span *ngIf="addSuccessstoriesForm.controls.title.errors?.pattern">Please enter valid
+                title.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Sub Title (Optional)" formControlName="subTitle">
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Brief" formControlName="brief" pattern=".*[^ ].*">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(addSuccessstoriesForm.controls.brief.invalid && addSuccessstoriesForm.controls.brief.touched) || (addSuccessstoriesForm.controls.brief.invalid && showErrorIcon && !addSuccessstoriesForm.controls.brief.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="addSuccessstoriesForm.controls.brief.errors?.required">Brief is required.</span>
+              <span *ngIf="addSuccessstoriesForm.controls.brief.errors?.pattern">Please enter valid
+                brief.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <ion-label class="headerNameCss" position="floating">
+            Description</ion-label>
+          <br>
+          <br>
+          <div id="editor-container">
+          </div>
+          <br>
+
+          <button type="submit" class="buttonfont selector loginButton">SUBMIT</button>
+        </form>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- 
+  <br>
+  <div class="inputDiv">
+    <div class="addCameraBacground" (click)="presentActionSheet()">
+      <ion-icon class="cameraIcon" ios="ios-camera" md="md-camera"></ion-icon>
+    </div>
+
+    <ion-avatar class="avatar-border-color">
+      <ion-img class="profilePic" [src]="imageData"></ion-img>
+    </ion-avatar>
+    <br>
+    <br>
+    <p class="errorMsg" style="text-align: center;" *ngIf="this.choosedFileName == 'fileNotSelected'">Please upload
+      image</p>
+
+    <ion-item class="inoItem">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showTitleErrorMsg == true, 'blacklabel' : showTitleErrorMsg == false}">
+              Title
+            </ion-label>
+            <ion-input class="headerNameCss" type="text" name="title" [(ngModel)]="title" (ionChange)="titlevalidator()"
+              required pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$"></ion-input>
+
+          </ion-col>
+          <ion-col size="2" *ngIf="showTitleErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <p class="errorMsg" *ngIf="showTitleErrorMsg">{{titleErrorMsg}}</p>
+
+    <ion-item class="inoItem">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating">
+              Sub Title (Optional)
+            </ion-label>
+            <ion-input class="headerNameCss" type="text" name="subTitle" [(ngModel)]="subTitle"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item class="inoItem">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showBriefErrorMsg == true, 'blacklabel' : showBriefErrorMsg == false}">
+              Brief
+            </ion-label>
+            <ion-textarea rows="3" [(ngModel)]="brief" (ionChange)="validationForBrief()" required
+              pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$"></ion-textarea>
+
+          </ion-col>
+          <ion-col size="2" *ngIf="showBriefErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <br *ngIf="!showBriefErrorMsg">
+    <p class="errorMsg" *ngIf="showBriefErrorMsg">Please enter brief</p>
+
+    <ion-label class="headerNameCss" position="floating">
+      Description</ion-label>
+    <br>
+    <br>
+    <div id="editor-container">
+    </div>
+    <br>
+   
+  </div> -->
+</ion-content>

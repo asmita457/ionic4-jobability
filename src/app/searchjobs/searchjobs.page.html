@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-row>
+      <ion-col size="2" (click)="goBack()">
+        <!-- <ion-img src="../../assets/img/backnavigation.png" style="padding: 25% 25% 25% 25%;">
+        </ion-img> -->
+
+        <img aria-label="Back navigation button" alt="Back navigation button" src="../../assets/img/backnavigation.png"
+          style="padding: 25% 25% 25% 25%;">
+      </ion-col>
+      <ion-col size="9.5">
+        <ion-searchbar #q [(ngModel)]="searchTitle" (keyup.enter)="search(q.value)"
+          placeholder="Jobtitle, Skill or Company"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+
+  <div class="divPadding">
+    <ion-row>
+      <ion-col size="9">
+        <ion-label style="color:#2b0c43">{{searchResultLength}} Jobs</ion-label>
+      </ion-col>
+      <ion-col size="3" (click)="filterSearchResult()">
+        <ion-icon name="funnel" style="margin-top:-3px" class="icon" aria-label="filter"></ion-icon>
+        <ion-label style="color:#2b0c43; padding-left:10% !important;position: absolute;">Filter</ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="showSearchData">
+    <ion-card *ngFor="let item of filterSearchArray; let j = index" class="cardMargins">
+      <ion-card-content>
+        <ion-list>
+          <ion-row>
+            <ion-col size="10" (click)="jobDescription(item)">
+              <ion-row>
+                <!-- <ion-col size="11"> -->
+                <ion-label style="font-size: 18px;color:#2b0c43;">{{item.name}}</ion-label>
+                <!-- </ion-col> -->
+
+              </ion-row>
+              <ion-row>
+                <ion-label class="companyCss">{{item.company_name}}</ion-label>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="1">
+                  <ion-img src="../../assets/img/experience.png" class="experienceAndLocationPng">
+                  </ion-img>
+                </ion-col>
+                <ion-col size="11">
+                  <ion-label class="ionimgcss">{{item.min_experience}} - {{item.max_experience}} years</ion-label>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="1">
+                  <ion-img src="../../assets/img/location.png" class="experienceAndLocationPng">
+                  </ion-img>
+                </ion-col>
+                <ion-col size="11">
+                  <ion-label class="ionimgcss">{{item.location_name}}</ion-label>
+                  <br>
+                </ion-col>
+              </ion-row>
+              <!-- <ion-row>
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-img src="../../assets/img/experience.png" class="locationCss" style="margin-right:5px"></ion-img>
+                        <ion-label class="experienceCss">{{item.min_experience}} - </ion-label>
+                        <ion-label class="experienceCss">{{item.max_experience}} years</ion-label>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col size="8">
+                      <ion-row>
+                        <ion-img src="../../assets/img/location.png" class="locationCss"></ion-img>&nbsp;&nbsp;
+                        <ion-label class="locationNameCss" style="margin-top:1px">{{item.location_name}}</ion-label><br>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row> -->
+              <ion-row>
+                <ion-label class="postedDaysCss"><i>Posted: {{item.posted_age}}</i></ion-label>
+              </ion-row>
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon *ngIf="item.job_saved_flag != 1" (click)="saveJob(item.id)" aria-label="save job"
+                name="heart-empty" class="iconcss emptyHeart"></ion-icon>
+              <ion-icon *ngIf="item.job_saved_flag == 1" (click)="saveJob(item.id)" aria-label="job saved"
+                ios="ios-heart" md="md-heart" class="iconcss fillHeart"></ion-icon>
+            </ion-col>
+
+
+            <!-- <ion-col size="2">
+                <ion-icon *ngIf="item.job_saved_flag != 1 || (saveFlag == false && item.id == flagId)" (click)="saveJob(item.id)" name="heart-empty"
+                  style="float:right;padding: 10%;" class="iconcss"></ion-icon>
+                <ion-icon *ngIf="item.job_saved_flag == 1 || (saveFlag == true && item.id == flagId)" (click)="saveJob(item.id)" ios="ios-heart"
+                  md="md-heart" style="float:right;color:#2b0c43;padding: 10%;" class="iconcss"></ion-icon>
+              </ion-col> -->
+          </ion-row>
+
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- <ion-label style="font-size: 15px;color:black ; margin-top:-3px">{{item.location_name}}</ion-label> -->
+  <div *ngIf="!showSearchData" class="noSearchResult">
+    <!-- <h5 align="center">No search results</h5> -->
+    No search results
+  </div>
+
+  <br>
+  <ion-infinite-scroll [disabled]="!moreDataAvailable" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

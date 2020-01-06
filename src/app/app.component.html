@@ -1,0 +1,56 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu style="background-color: #3d000000" type="reveal" (ionDidOpen)="menuOpened()" (ionDidClose)="menuClosed()">
+      <ion-content>
+        <ion-row style="background-color: #d6d1c4; height: 129px;">
+          <ion-col size="5" style="margin-top: 10px;">
+            <div>
+              <div class="cameraBacground" (click)="presentActionSheet()">
+                <ion-icon class="cameraIcon" ios="ios-camera" md="md-camera"></ion-icon>
+              </div>
+
+              <div *ngIf="isLogoAvailable == false">
+                <div class="profile-picture big-profile-picture">
+                </div>
+              </div>
+              <div *ngIf="isLogoAvailable == true">
+                <img class="profile-picture big-profile-picture" aria-label="profile pic" src="{{photos}}" />
+              </div>
+            </div>
+          </ion-col>
+          <ion-col size="7" style="margin-top: 16%;color: #2b0c43;text-align: left;">
+            <label>{{userName}}</label>
+          </ion-col>
+        </ion-row>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item lines="none" [routerDirection]="'root'" [routerLink]="[p.url]" (click)="sideMenuClicked(p.title)">
+              <ion-label style="color: #2b0c43">
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <!-- <ion-label [id]="id"style="color: #2b0c43">
+            label
+          </ion-label> -->
+        </ion-list>
+      </ion-content>
+      <ion-footer>
+        <!-- <ion-toolbar>
+          <ion-title>Footer</ion-title>
+        </ion-toolbar> -->
+        <!-- <ion-item>
+          <ion-label floating>Location name</ion-label>
+          <ion-input #myInput type="text"></ion-input>
+        </ion-item> -->
+        <ion-item>
+          <ion-label style="color: #2b0c43">
+            Version: {{appversion}}
+          </ion-label>
+        </ion-item>
+
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

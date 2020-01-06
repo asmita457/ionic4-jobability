@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-row>
+      <ion-col size="2" (click)="goBack()">
+        <ion-img src="../../assets/img/backnavigation.png" style="padding: 0% 20% 0% 20%;">
+        </ion-img>
+      </ion-col>
+      <ion-col size="6">
+        <ion-title style="margin-left: 5%; margin-top: 2%; color: #2b0c43">Service Details</ion-title>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon class="iconcss" aria-label="comment for service" ios="ios-text" md="md-text" (click)="comment()"
+          style="float:right;color:#2b0c43; padding: 5% 20% 5% 20%;"></ion-icon>
+      </ion-col>
+
+      <ion-col size="2" (click)="ratings()" >
+        <ion-icon aria-label="rate for service" ios="ios-star" md="md-star" style="color: #2b0c43;font-size: x-large;padding: 2% 0% 0% 20%;">
+        </ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <div *ngIf="showServiceDetails"> -->
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col>
+
+            <ion-label class="profilePageHeaderStripSection1 cardContents">SERVICE DETAILS</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding cardLeftPadding">
+      <ion-grid> </ion-grid>
+
+      <ion-label class="cardHeadings">Service Title:</ion-label>
+      <br>
+      <ion-label class="cardContents">{{serviceDetails.name}}</ion-label>
+      <br>
+      <ion-label class="cardHeadings">Location:</ion-label>
+      <br>
+      <ion-label class="cardContents">{{serviceDetails.location_list}}</ion-label>
+      <br>
+
+      <ion-label class="cardHeadings">Disability Accepted:</ion-label>
+      <br>
+      <ion-label class="cardContents">{{serviceDetails.disability_list}}</ion-label>
+      <br>
+
+      <ion-label class="cardHeadings">Service Category:</ion-label>
+      <br>
+      <ion-label class="cardContents">{{serviceDetails.service_type_list}}</ion-label>
+      <br>
+
+      <ion-label class="cardHeadings">Service Description:</ion-label>
+      <br>
+      <ion-label class="cardContents">{{serviceDetails.description}}</ion-label>
+      <br>
+
+      <ion-label class="cardHeadings">Posted by:</ion-label>
+      <br>
+      <ion-label class="cardContents">{{serviceDetails.contact_person}}, {{serviceDetails.posted_age}}</ion-label>
+      <br>
+      <br>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col>
+
+            <ion-label class="profilePageHeaderStripSection1 cardContents">CONTACT INFORMATION</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid> </ion-grid>
+
+      <div class="cardPaddingLeft" *ngIf="serviceDetails.show_contact == 0">
+        <div *ngIf="serviceDetails.organization_name != ''">
+          <ion-label class="cardHeadings">Organization Name:</ion-label>
+          <br>
+          <ion-label class="cardContents">
+            {{serviceDetails.organization_name}}</ion-label>
+          <br>
+        </div>
+        <ion-label class="cardHeadings">Email:</ion-label>
+        <br>
+        <ion-label class="cardContents">{{serviceDetails.contact_email}}</ion-label>
+        <br>
+
+        <!-- <ion-label class="cardHeadings">Disability Accepted:</ion-label>
+          <br>
+          <ion-label class="cardContents">{{serviceDetails.disability_list}}</ion-label>
+          <br> -->
+
+        <ion-label class="cardHeadings">Website:</ion-label>
+        <br>
+        <ion-label class="cardContents">{{serviceDetails.organization_website_url}}</ion-label>
+        <br>
+
+        <ion-label class="cardHeadings">Person:</ion-label>
+        <br>
+        <ion-label class="cardContents">{{serviceDetails.contact_person}}</ion-label>
+        <br>
+
+        <ion-label class="cardHeadings">Mobile:</ion-label>
+        <br>
+        <a href="tel:{{serviceDetails.mobile}}" [attr.aria-label]="splitMobile">{{serviceDetails.contact_mobile}}</a>
+
+        <br>
+
+        <ion-label class="cardHeadings">Phone:</ion-label>
+        <br>
+        <a href="tel:{{serviceDetails.contact_phone}}"
+          [attr.aria-label]="splitPhone">{{serviceDetails.contact_phone}}</a>
+
+        <br>
+        <!-- </ion-row> -->
+      </div>
+      <ion-grid>
+      </ion-grid>
+      <div *ngIf="serviceDetails.show_contact == 1" style="padding: 5%">
+        The service provider has not shared their contact details.
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <!-- </div> -->
+
+
+  <br>
+  <br>
+
+</ion-content>

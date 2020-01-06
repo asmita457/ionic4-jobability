@@ -1,0 +1,67 @@
+<ion-content class="background" justify>
+  <ion-img class="jobabilitylogo" aria-label="i2talent logo" alt="i2talent logo"
+    src="../../assets/img/jobabilitylogo.png">
+  </ion-img>
+  <ion-card class="cardMargins">
+    <ion-card-content style="padding-bottom:20px">
+      <ion-item lines="none" style="width:100%">
+        <div (click)="goBack()" style="width:40px; height:40px;">
+          <img style="width:25px !important; height:25px; margin-top: 12.5px;" aria-label="Back navigation button "
+            alt="Back navigation button " src="../../assets/img/backnavigation.png">
+        </div>
+        <ion-label align="center" style="font-weight: bold; font-size: 18px;color:#2b0c43;">VERIFY
+          OTP</ion-label>
+      </ion-item>
+      <br>
+      <div text-center style="color: #2b0c43; font-size: 15px;">
+        <label [attr.aria-label]="sentOtpMsg">We have sent an OTP (one time password) to your mobile number.</label>
+        <a aria-hidden="true" href="tel:{{mobileNumber}}">{{mobileNumber}}</a>
+      </div>
+
+      <div text-center><label text-center style="color: #2b0c43; font-size: 15px;">You will receive it shortly</label>
+      </div>
+
+      <br>
+      <br>
+      <div text-center style="color: #2b0c43;">Enter OTP below</div>
+      <br>
+      <ion-row text-center>
+        <ion-col>
+          <input type="tel" [attr.aria-label]="firstDigit" [attr.role]="inputFiedlsROle" [disabled]="isDisable" #otp1
+            maxLength="1" (keyup)="next($event, '', otp2)" [(ngModel)]="otp_value1">
+          <input type="tel" [attr.aria-label]="secondDigit" [attr.role]="inputFiedlsROle" [disabled]="isDisable" #otp2
+            maxLength="1" (keyup)="next($event, otp1, otp3)" [(ngModel)]="otp_value2">
+          <input type="tel" [attr.aria-label]="thirdDigit" [attr.role]="inputFiedlsROle" [disabled]="isDisable" #otp3
+            maxLength="1" (keyup)="next($event, otp2, otp4)" [(ngModel)]="otp_value3">
+          <input type="tel" [attr.aria-label]="fourthDigit" [attr.role]="inputFiedlsROle" [disabled]="isDisable" #otp4
+            maxLength="1" (keyup)="next($event, otp3, '')" [(ngModel)]="otp_value4">
+        </ion-col>
+
+        <!-- <ion-col>
+          <ion-input type="tel" #otp1 maxLength="1" pattern="[0-9]{4}" maxlength="1"
+            size="1" (keyup)="next($event, '', otp2)" [(ngModel)]="otp_value1">
+          </ion-input>
+          <ion-input type="tel" #otp2 maxLength="1" pattern="[0-9]{4}" maxlength="1" size="1"
+            (keyup)="next($event, otp1, otp3)" [(ngModel)]="otp_value2">
+          </ion-input>
+          <ion-input type="tel" #otp3 maxLength="1" pattern="[0-9]{4}" maxlength="1" size="1"
+            (keyup)="next($event, otp2, otp4)" [(ngModel)]="otp_value3">
+          </ion-input>
+          <ion-input type="tel" #otp4 maxLength="1" pattern="[0-9]{4}" maxlength="1" size="1"
+            (keyup)="next($event, otp3, '')" [(ngModel)]="otp_value4">
+          </ion-input>
+        </ion-col> -->
+      </ion-row>
+      <br>
+      <br>
+      <br>
+      <p *ngIf="isOTPRecived" [attr.role]="role" style="text-align: center;
+color: red;">OTP has been entered automatically, Please click on continue button to verify.</p>
+      <br>
+      <button (click)="otpGeneratedSuccessfully()" class="buttonfont selector">CONTINUE</button>
+
+      <!-- <a style="margin-top:30px; margin-left: 33%" onclick='resendOTP()'>Resend OTP</a> -->
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

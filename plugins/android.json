@@ -1,0 +1,99 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com-badrit-base64": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-fabric-plugin": {
+      "FABRIC_API_KEY": "48fccde309fb496f48c98a2b65d55ae1b8fb73cf",
+      "FABRIC_API_SECRET": "c1c81135d7f04e1976630042687524541a40604131fe27fff478ab0c822ebf90",
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-crop": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-email-composer": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-filechooser": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "phonegap-plugin-local-notification": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "cordova-plugin-tts": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "phonegap-plugin-mobile-accessibility": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.inceptive.jobability"
+    }
+  }
+}

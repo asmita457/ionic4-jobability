@@ -1,0 +1,282 @@
+<!-- <ion-header color="medium"> -->
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button class="headerNameCss"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="headerNameCss">My Profile</ion-title>
+    <ion-icon class="headerNameCss" name="notifications" (click)="navigateToNotification()" aria-label="notifications button" alt="notifications button"></ion-icon>
+    <ion-badge *ngIf="badgecount != 0" id="notifications-badge" color="danger">{{badgecount}}</ion-badge>
+  </ion-item>
+</ion-toolbar>
+<!-- </ion-header> -->
+
+<ion-content>
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="10">
+            <ion-label class="profilePageHeaderStripSection1">RESUME</ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <!-- <ion-icon class="editContact" style="padding: 0% 22% 0% 0%;" ios="ios-add-circle" md="md-add-circle"></ion-icon> -->
+            <span style="padding-left:5%" (click)="uploadResume()" class="profilePageHeaderStripSection2"
+              aria-label="Upload resume button">UPLOAD</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <h3 *ngIf="fileName == null" style="padding-left:5%" class="fileName">No File Uploaded</h3>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid>
+        <ion-row *ngIf="showResume">
+          <ion-col size="1">
+            <ion-icon class="editContact" ios="ios-document" md="md-document"></ion-icon>
+          </ion-col>
+          <ion-col size="9">
+            <ion-label class="fileName">{{fileName}}</ion-label>
+          </ion-col>
+          <ion-col size="2" (click)="download()" style="padding-left:5%">
+            <!-- <ion-label class="fileName">
+              <u style="padding-left:25%">Download</u>
+            </ion-label> -->
+            <!-- <div class="candidateProfileBackground"> -->
+            <ion-icon class="candidateProfileIcon" style="font-size: x-large" ios="ios-download" md="md-download">
+            </ion-icon>
+            <!-- </div> -->
+          </ion-col>
+        </ion-row>
+        <p class="contentInfo" style="padding-left:2%" aria-label="* Supported File Type: PDF, DOC, DOC X">*Supported
+          File Type: PDF, DOC, DOCX</p>
+
+      </ion-grid>
+    </ion-card-content>
+
+    <!-- <ion-grid>
+      <ion-col size="12">
+      </ion-col>
+    </ion-grid> -->
+
+  </ion-card>
+
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="10">
+            <ion-label class="profilePageHeaderStripSection1">CONTACT INFORMATION</ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <ion-label (click)="updateContactInfo()" class="profilePageHeaderStripSection2">EDIT</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <ion-label class="headingLabel">Name:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{name}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Email:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{email}}</ion-label>
+            <br>
+            <div *ngIf="showVerifyButton">
+              <ion-button class="verifyEmail" size="small" shape="round" fill="outline" style="color:red"
+                (click)="emailVerification()">Verify</ion-button>
+              <br>
+            </div>
+            <div *ngIf="showVerifiedButton">
+              <ion-button class="verifiedEmail" size="small" shape="round" fill="outline" style="color: #2b0c43">
+                Verified</ion-button>
+              <br>
+            </div>
+
+            <ion-label class="headingLabel">Mobile:</ion-label>
+            <br>
+            <!-- <ion-label class="contentInfo">{{mobile}}</ion-label> -->
+            <a href="tel:{{mobile}}" [attr.aria-label]="splitMobile">{{mobile}}</a>
+            <br>
+          </ion-col>
+          <ion-col size="4">
+            <!-- <div class="profile-picture big-profile-picture"></div> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="10">
+            <ion-label class="profilePageHeaderStripSection1">PRESENT SKILLSET</ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <ion-label (click)="updatePresentSkillsets()" class="profilePageHeaderStripSection2">EDIT</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="headingLabel">Industry:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{industry}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Functional Area:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{functionalArea}}</ion-label>
+            <br>
+            <ion-label class="headingLabel">Total Experience:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{totalYearExperience}} Years, {{totalMonthExperience}} Months</ion-label>
+            <br>
+            <ion-label class="headingLabel">Key Skills:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{KeySkills}}</ion-label>
+
+          </ion-col>
+          <ion-col size="4">
+            <!-- <div class="profile-picture big-profile-picture"></div> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="10">
+            <ion-label class="profilePageHeaderStripSection1">EXPERIENCE</ion-label>
+          </ion-col>
+          <ion-col size="2" (click)="addExperience()">
+            <ion-label class="profilePageHeaderStripSection2">ADD</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content class="cardPadding" *ngFor="let item of seekerExperienceDetails">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+
+            <ion-row style="margin-left: -1%;">
+              <ion-col size="10">
+                <ion-label class="headingLabel">Company:</ion-label>
+                <br>
+                <ion-label class="contentInfo">{{item.company_organisation}}</ion-label>
+              </ion-col>
+
+              <ion-col size="1" (click)="updateWorkExperience(item.id)">
+                <ion-icon aria-label="edit" class="editContact" ios="ios-create" md="md-create"></ion-icon>
+              </ion-col>
+              <ion-col size="1" (click)="deleteWorkExperience(item.id)">
+                <ion-icon aria-label="delete" class="editContact" ios="ios-create" md="md-trash"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-label class="headingLabel">Designation:</ion-label>
+            <br>
+            <ion-label class="contentInfo">{{item.designation}}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card class="cardMargins">
+    <ion-card-header class="profileCardHeader">
+      <ion-grid class="cardPadding">
+        <ion-row class="profilePageHeaderrow">
+          <ion-col size="10">
+            <ion-label class="profilePageHeaderStripSection1">EDUCATIONAL INFORMATION</ion-label>
+          </ion-col>
+
+          <ion-col *ngIf="education_type == 4" size="2" (click)="addEducation()">
+            <ion-label class="profilePageHeaderStripSection2">ADD</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <div *ngIf="education_type == 4">
+      <ion-card-content class="cardPadding" *ngFor="let item of seekerQualificationInfo">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+
+              <ion-row style="margin-left: -1%;">
+                <ion-col size="10">
+                  <ion-label class="headingLabel">Qualification:</ion-label>
+                  <br>
+                  <ion-label class="contentInfo">{{item.qualification_name}}</ion-label>
+                </ion-col>
+
+                <ion-col size="1" (click)="updateEducation(item.id)">
+                  <ion-icon aria-label="edit" class="editContact" ios="ios-create" md="md-create"></ion-icon>
+                </ion-col>
+                <ion-col size="1" (click)="deleteEducation(item.id)">
+                  <ion-icon aria-label="delete" class="editContact" ios="ios-create" md="md-trash"></ion-icon>
+                </ion-col>
+              </ion-row>
+
+              <!-- <ion-label class="headingLabel">Qualification:</ion-label>
+                <br>
+                <ion-label class="contentInfo">{{qualification_name}}</ion-label>
+                <br> -->
+              <ion-label class="headingLabel">Specialization:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{item.specialisation}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Passing Year:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{item.year_of_passing}}</ion-label>
+              <br>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </div>
+    <div *ngIf="education_type != 4">
+      <ion-card-content class="cardPadding" *ngFor="let item of seekerQualificationInfo">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <!-- <span style="color: #2b0c43">{{educationName}}</span> -->
+              <ion-row style="margin-left: -1%;">
+                <ion-col size="10">
+                  <ion-label class="contentInfo">{{educationName}}</ion-label>
+                </ion-col>
+                <ion-col size="1" (click)="updateEducation(item.id)">
+                  <ion-icon class="editContact" ios="ios-create" md="md-create"></ion-icon>
+                </ion-col>
+                <ion-col size="1" (click)="deleteEducation(item.id)">
+                  <ion-icon class="editContact" ios="ios-create" md="md-trash"></ion-icon>
+                </ion-col>
+              </ion-row>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </div>
+  </ion-card>
+  <br>
+  <br>
+</ion-content>

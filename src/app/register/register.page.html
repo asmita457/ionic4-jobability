@@ -1,0 +1,148 @@
+<ion-content class="background" role="application">
+
+  <img class="jobabilitylogo" aria-label="i2talent logo" alt="i2talent logo" src="../../assets/img/jobabilitylogo.png">
+
+
+  <ion-card class="cardMargins">
+    <ion-card-content style="padding-bottom:20px">
+      <!-- <ion-row>
+        <ion-item lines="none" class="inoItem">
+          <div (click)="goBack()" class="backbutton">
+            <img class="backbuttonImage" aria-label="Back navigation button" alt="Back navigation button"
+              src="../../assets/img/backnavigation.png">
+          </div>
+        </ion-item>
+        <ion-item lines="none" style="width: 58%;">
+          <div>
+            <ion-label align="center" style="margin-left: 45%; width: 100%;" class="authenticationLabel">REGISTER
+            </ion-label>
+          </div>
+        </ion-item>
+      </ion-row> -->
+
+      <ion-row class="formPadding">
+        <ion-col size="2" (click)="goBack()">
+          <div>
+            <img class="backArrow" aria-label="Back navigation button" alt="Back navigation button"
+              src="../../assets/img/backnavigation.png">
+          </div>
+        </ion-col>
+        <ion-col size="9">
+          <div class="registerLabel">
+            <ion-label class="authenticationLabel">REGISTER
+            </ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+
+
+      <div class="formPadding">
+        <form [formGroup]="registrationForm">
+          <p>
+            <mat-form-field class="inputFields">
+              <mat-label>Signup As</mat-label>
+              <mat-select formControlName="profileType" [errorStateMatcher]="esMatcher"
+                (selectionChange)="selectedProfileType($event.value)" [aria-label]="readProfileType">
+                <mat-option *ngFor="let item of profiletypeArray" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+
+              <mat-error>
+                <span *ngIf="registrationForm.controls.profileType.errors?.required">Please select profile type.</span>
+              </mat-error>
+            </mat-form-field>
+          </p>
+
+          <p *ngIf="isJobSeekerSelected">
+            <mat-form-field class="inputFields">
+              <mat-label>Name (e.g. Sophie Morgan)</mat-label>
+              <input matInput formControlName="name" [errorStateMatcher]="esMatcher" pattern="[A-z\s]+">
+              <mat-icon matSuffix color="warn"
+                *ngIf="(registrationForm.controls.name.invalid && registrationForm.controls.name.touched) || (registrationForm.controls.name.invalid && showErrorIcon && !registrationForm.controls.name.touched)">
+                error
+              </mat-icon>
+
+              <mat-error>
+                <span *ngIf="registrationForm.controls.name.errors?.required">Name is required.</span>
+                <!-- <span *ngIf="registrationForm.controls.name.errors?.pattern">Please enter valid email id.</span> -->
+              </mat-error>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field class="inputFields">
+              <mat-label>Email Id</mat-label>
+              <input matInput formControlName="username" [errorStateMatcher]="esMatcher"
+                pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$">
+              <mat-icon matSuffix color="warn"
+                *ngIf="(registrationForm.controls.username.invalid && registrationForm.controls.username.touched) || (registrationForm.controls.username.invalid && showErrorIcon && !registrationForm.controls.username.touched)">
+                error
+              </mat-icon>
+
+              <mat-error>
+                <span *ngIf="registrationForm.controls.username.errors?.required">Email id is required.</span>
+                <span *ngIf="registrationForm.controls.username.errors?.pattern">Please enter valid email id.</span>
+              </mat-error>
+            </mat-form-field>
+          </p>
+
+
+          <p>
+            <mat-form-field class="inputFields">
+              <mat-label>Mobile</mat-label>
+              <input type="tel" matInput formControlName="mobile" [errorStateMatcher]="esMatcher" pattern="^[0-9]{10}$">
+              <mat-icon matSuffix color="warn"
+                *ngIf="(registrationForm.controls.mobile.invalid && registrationForm.controls.mobile.touched) || (registrationForm.controls.mobile.invalid && showErrorIcon && !registrationForm.controls.mobile.touched)">
+                error</mat-icon>
+              <mat-error>
+                <span *ngIf="registrationForm.controls.mobile.errors?.required">Mobile number is required.</span>
+                <span
+                  *ngIf="registrationForm.controls.mobile.errors?.minlength || registrationForm.controls.mobile.errors?.maxlength">Please
+                  enter valid mobile number.</span>
+              </mat-error>
+            </mat-form-field>
+          </p>
+
+          <p *ngIf="isJobSeekerSelected">
+            <mat-form-field class="inputFields">
+              <mat-label>Partner Name</mat-label>
+              <mat-select formControlName="partner_id" [errorStateMatcher]="esMatcher"
+                (selectionChange)="selectedPartner($event)" [aria-label]="readPartnerValue">
+                <mat-option *ngFor="let item of partnerList" [value]="item">
+                  {{item.organization_name}}
+                </mat-option>
+              </mat-select>
+
+              <!-- <mat-error>
+                <span *ngIf="registrationForm.controls.partnerIs.errors?.required">Please select profile type.</span>
+              </mat-error> -->
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field class="inputFields">
+              <mat-label>Password</mat-label>
+              <input [type]="hide ? 'password' : 'text'" matInput formControlName="password"
+                [errorStateMatcher]="esMatcher">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide" style="background: white;
+                font-size: unset;">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error>
+                <span *ngIf="registrationForm.controls.password.errors?.required">Password is required.</span>
+                <span *ngIf="registrationForm.controls.password.errors?.minlength">Password should be at least 6
+                  characters long.</span>
+              </mat-error>
+            </mat-form-field>
+          </p>
+
+          <button type="submit" (click)="register(registrationForm.value)" class="buttonfont selector loginButton"
+            style="margin-bottom: 10px;margin-top:25px">SIGN
+            UP</button>
+        </form>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

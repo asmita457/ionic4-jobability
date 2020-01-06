@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "515947629896",
+    "firebase_url": "https://jobability-4306c.firebaseio.com",
+    "project_id": "jobability-4306c",
+    "storage_bucket": "jobability-4306c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515947629896:android:c3809370941f58f3",
+        "android_client_info": {
+          "package_name": "com.inceptive.jobability"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515947629896-mucm0aq78kuf67ebekevqdqi913bv8ch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzomjUr71sCIN3-LZZMEy0U35WA8GLcRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515947629896-mucm0aq78kuf67ebekevqdqi913bv8ch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

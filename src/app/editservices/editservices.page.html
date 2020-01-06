@@ -1,0 +1,93 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Edit Service Detail</ion-title>
+  </ion-item>
+</ion-toolbar>
+
+<ion-content>
+  <ion-card class="cardMargins boxShadow">
+    <ion-card-content>
+      <div class="formPadding">
+        <form [formGroup]="editServiceForm" (ngSubmit)="updateServiceDetail(editServiceForm.value)">
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Service Title" [(ngModel)]="editServiceDetails.Service_Title"
+              formControlName="serviceTitle" [errorStateMatcher]="esMatcher" pattern=".*[^ ].*">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(editServiceForm.controls.serviceTitle.invalid && editServiceForm.controls.serviceTitle.touched) || (editServiceForm.controls.serviceTitle.invalid && showErrorIcon && !editServiceForm.controls.serviceTitle.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="editServiceForm.controls.serviceTitle.errors?.required">Service title is required.</span>
+              <span *ngIf="editServiceForm.controls.serviceTitle.errors?.pattern">Please enter valid service
+                title.</span>
+
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <mat-label>Service Category</mat-label>
+            <mat-select formControlName="serviceCategory" [errorStateMatcher]="esMatcher"
+              [(ngModel)]="editServiceDetails.Service_Category" multiple>
+              <mat-option *ngFor="let item of categoryArray" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="editServiceForm.controls.serviceCategory.errors?.required">Service category is
+                required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <mat-label>Disability Type</mat-label>
+            <mat-select formControlName="disability" [errorStateMatcher]="esMatcher"
+              [(ngModel)]="editServiceDetails.Disability_Served" multiple>
+              <mat-option *ngFor="let item of disabilityArray" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="editServiceForm.controls.disability.errors?.required">Please select at least one
+                disability type.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Brief" [(ngModel)]="editServiceDetails.Brief" formControlName="brief"
+              [errorStateMatcher]="esMatcher" pattern=".*[^ ].*">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(editServiceForm.controls.brief.invalid && editServiceForm.controls.brief.touched) || (editServiceForm.controls.brief.invalid && showErrorIcon && !editServiceForm.controls.brief.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="editServiceForm.controls.brief.errors?.required">
+                Brief is required.</span>
+              <span *ngIf="editServiceForm.controls.brief.errors?.pattern">Please enter valid brief.</span>
+
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputFields">
+            <input matInput placeholder="Description" [(ngModel)]="editServiceDetails.Description"  formControlName="description"
+              [errorStateMatcher]="esMatcher" pattern=".*[^ ].*">
+            <mat-icon matSuffix color="warn"
+              *ngIf="(editServiceForm.controls.description.invalid && editServiceForm.controls.description.touched) || (editServiceForm.controls.description.invalid && showErrorIcon && !editServiceForm.controls.description.touched)">
+              error
+            </mat-icon>
+            <mat-error>
+              <span *ngIf="editServiceForm.controls.description.errors?.required">
+                Description is required.</span>
+              <span *ngIf="editServiceForm.controls.description.errors?.pattern">Please enter valid description.</span>
+
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <button type="submit" class="buttonfont selector">SAVE</button>
+        </form>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  
+</ion-content>

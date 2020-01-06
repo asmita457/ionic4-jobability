@@ -1,0 +1,45 @@
+<ion-toolbar class="new-background-color">
+    <ion-row>
+        <ion-col size="2" (click)="goBack()">
+            <ion-img src="../../assets/img/backnavigation.png" style="padding: 20% 25% 25% 25%;">
+            </ion-img>
+          </ion-col>
+      <ion-col size="10">
+        <ion-title class="titlecss" style="margin-top:4px">Post Job</ion-title>
+      </ion-col>
+    </ion-row>
+  
+</ion-toolbar>
+<ion-content>
+  <h5 align="center" style="color:#2b0c43">Job Location</h5>
+
+  <div class="inputDiv" style="margin-top:15%">
+
+    <ion-label class="headerNameCss"
+      [ngClass]="{'redlabel' : isCountrySelected == true, 'blacklabel' : isCountrySelected == false}">
+      Job in Country:</ion-label>
+    <ion-select class="ionSelectBorder headerNameCss" (ionChange)="selectedCountryValue($event)"
+      placeholder="Select Country" [(ngModel)]="countryID">
+      <ion-select-option *ngFor="let item of countryArrayFromLocalStorage;"
+        [value]="item.id">{{item.name}}</ion-select-option>
+    </ion-select>
+    <br>
+    <ion-label *ngIf="selectCountry" style="color: red">Please select Country</ion-label>
+
+    <div *ngIf="enableStateCityField == false">
+      <ion-label class="headerNameCss"
+        [ngClass]="{'redlabel' : isStateCitySelected == true, 'blacklabel' : isStateCitySelected == false}">
+        Job State / City:</ion-label>
+      <br>
+      <ion-select class="ionSelectBorder ionselectcss"  [(ngModel)]="stateCityId"  multiple="true" (ionChange)="selectedStateCityValue($event)" placeholder="Select State / City">
+        <ion-select-option *ngFor="let item of cityAndStateArrayFromLocalStorage;"  [value]="item.id">{{item.name}}</ion-select-option>
+      </ion-select>
+      <br>
+      <ion-label *ngIf="selectCountry" style="color: red">Please select State / City</ion-label>
+  </div>
+
+  </div>
+  <div class="saveButtonPadding bottomposition">
+    <button class="buttonfont" (click)="nextPage()">CONTINUE</button>
+  </div>
+</ion-content>

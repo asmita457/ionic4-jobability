@@ -1,0 +1,199 @@
+<ion-toolbar class="new-background-color">
+    <ion-item lines="none" class="new-background-color">
+      <ion-img src="../../assets/img/backnavigation.png" (click)="goBack()" style="width:20px; height:20px;">
+      </ion-img>
+      <ion-title>Job Details</ion-title>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-icon name="heart-empty"></ion-icon>
+      <ion-icon name="share"></ion-icon>
+    </ion-item>
+  </ion-toolbar>
+  <ion-content>
+    <ion-card class="cardmargincss">
+      <ion-card-content>
+        <ion-list>
+          <ion-row>
+            <ion-col size="10">
+              <ion-label style="font-size: 18px;color:black; ">Accountant Manager</ion-label>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon name="heart-empty" style="margin-top: 6px; height: 20px; width : 20px"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-label style="font-size: 16px;color:black; padding :5px;margin-top:-10px">Inceptive</ion-label>
+          </ion-row>
+          <ion-row style="padding:5px">
+            <ion-img src="../../assets/img/experience.png" style="width:15px; height:15px;;"></ion-img>&nbsp;&nbsp;
+            <ion-label style="font-size: 15px;color:black; margin-top:-1px;">0 - </ion-label>
+            <ion-label style="font-size: 15px;color:black; margin-top:-1px">2 years</ion-label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <ion-img src="../../assets/img/location.png" style="width:15px; height:15px; "></ion-img>&nbsp;&nbsp;
+            <ion-label style="font-size: 15px;color:black ; margin-top:-3px">Pune</ion-label><br>
+          </ion-row>
+          <i><ion-label style="font-size: 15px;color:black; padding :5px; font-weight:italic">Posted: 1 days ago
+            </ion-label><br></i>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  
+  
+  
+    <ion-card class="cardMargins">
+      <ion-card-header class="profileCardHeader">
+        <ion-grid class="cardPadding">
+          <ion-row class="profilePageHeaderrow">
+            <ion-col size="10">
+              <ion-label style="font-size:15px; color:black" class="profilePageHeaderStripSection1">JOB DESCRIPTION
+              </ion-label>
+            </ion-col>
+            <ion-col size="2">
+                <ion-label (click)="updateJobDescription()" class="profilePageHeaderStripSection2">EDIT</ion-label>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+  
+      <ion-card-content class="cardPadding">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label class="headingLabel">Industry:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{industry}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Functional Area:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{functionalarea}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Description</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{description}}</ion-label>
+              <br>
+            </ion-col>
+  
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  
+  
+  
+    <ion-card class="cardMargins">
+      <ion-card-header class="profileCardHeader">
+        <ion-grid class="cardPadding">
+          <ion-row class="profilePageHeaderrow">
+            <ion-col size="10">
+              <ion-label style="font-size:15px; color:black" class="profilePageHeaderStripSection1">DESIRED CANDIDATE
+                PROFILE</ion-label>
+            </ion-col>
+            <ion-col size="2">
+                <ion-label class="profilePageHeaderStripSection2">EDIT</ion-label>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+  
+      <ion-card-content class="cardPadding">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label class="headingLabel">Key Skills:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{keyskills}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Qualification:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{qualification}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Company Description</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{companydesc}}</ion-label>
+              <br>
+            </ion-col>
+  
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card class="cardMargins">
+      <ion-card-header class="profileCardHeader">
+        <ion-grid class="cardPadding">
+          <ion-row class="profilePageHeaderrow">
+            <ion-col size="12">
+              <ion-label style="font-size:15px; color:black" class="profilePageHeaderStripSection1">CONTACT INFORMATION
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+  
+      <ion-card-content class="cardPadding">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label class="headingLabel">Key Skills:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{keyskills}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Qualification:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{qualification}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Company Description</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{companydesc}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Contact Person Name:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{keyskills}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Company Address:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{qualification}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Country:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{companydesc}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">State/Province:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{companydesc}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">District/City:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{keyskills}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Mobile:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{qualification}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Disability Accepted Types</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{companydesc}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Vacancies:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{companydesc}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Walkin Interview Dates:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{keyskills}}</ion-label>
+              <br>
+              <ion-label class="headingLabel">Annual Salary:</ion-label>
+              <br>
+              <ion-label class="contentInfo">{{qualification}}</ion-label>
+              <br>
+  
+            </ion-col>
+  
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  
+    <div class="bottomposition">
+      <button class="buttonfont" >APPLY</button>
+    </div>
+  </ion-content>

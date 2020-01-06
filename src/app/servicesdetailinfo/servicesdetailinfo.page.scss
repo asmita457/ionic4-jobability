@@ -1,0 +1,23 @@
+
+  .headingLabel{
+    color:#2b0c43;
+    font-size:12px;
+    font-weight:bold;
+    }
+    
+    .contentInfo{
+    font-size:15px;
+    color:#2b0c43;
+    display: inline-block;
+    }
+    
+  .avgHeaderTitle {
+    display: flex;
+    justify-content: center;
+    }
+    
+    .sc-ion-segment-md-h {
+    --color-checked: #2b0c33;
+    --color-checked-disabled: var(--color-checked);
+    --indicator-color: transparent;
+    }

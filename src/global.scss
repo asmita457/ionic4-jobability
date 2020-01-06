@@ -1,0 +1,611 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
+
+[contenteditable] {
+-webkit-user-select: text;
+user-select: text;
+}
+
+.bordertask{
+  border: 0.5px solid black;
+  border-radius: 4px;
+  padding: 5px !important;
+  height: 52px;
+}
+.bottomposition {
+  position: fixed;
+  left: 0;
+  bottom: 5%;
+  right: 0;
+}
+
+.buttoncss{
+  border-radius: 4px;
+  width:100%;
+  height:52px;
+  font-size:20px;
+  color:#2b0c43; 
+  // color:#2b0c43;
+//  background: lightgrey;
+}
+
+  .backgroundborder{
+    border: 0.5px solid black;
+    border-radius: 1px;
+    align-self: center;
+    margin-top: 5px;
+    background: white;
+    margin-left: 5%;
+    height: 30px;
+    margin-right: 5%;
+    width: 90% !important;
+  }  
+
+  .borderimage{
+    border: 0.5px solid black;
+    border-radius: 1px;
+    padding: 5px !important;
+    min-height: 40px !important;
+    margin-left: 5px;
+    margin-top: 8px;
+    margin-right: 5px;
+    align-content: center;
+    align-self: center;
+  
+  }
+ 
+  .rowcss{
+   width:80%;
+   margin-left:10%;
+    margin-right:10%;
+     
+  }
+
+  .topmargin{
+    margin-top:10px;
+  }
+  
+  .selector{
+    font-size: 14px;
+    color: rgb(61, 59, 59);
+    font-weight: bold;
+    background-color: #ffffff;
+  }
+
+  .h5-text{
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 15px;
+  }
+
+  .buttonfont{
+    border: 0.5px solid black;
+    border-radius: 4px;
+    padding: 5px !important;
+    background:#2b0c43;
+    color: white;
+    height:52px;
+    width:100%;
+    font-size: 15px;
+  }
+.buttonfont:active{
+    border: 0.5px solid black;
+    border-radius: 4px;
+    padding: 5px !important;
+    background:#614278;
+    color: white;
+    height:52px;
+    width:100%;
+    font-size: 15px;
+  }
+
+.inputTextbox{
+  margin-left:10%;
+  margin-right:10%;
+  margin-top:25px; 
+  width: 80%;
+  }
+  
+  .new-background-color{
+  --background: #ffef2e;
+  }
+  
+  .profile-picture {
+    padding: 0px;
+    border-radius: 100%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    margin: 5% auto;
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    background: gray;
+    }
+
+    .backbutton{
+      width:50px;
+      height:50px;
+      }
+  
+  .backbuttonImage{
+      // width: 25px;
+      // height: 15px;
+      // margin-top: 17px;
+      // margin-left: 13px;
+
+      width: 25px !important;
+      height: 25px;
+      margin-top: 11px;
+      margin-left: 13px;
+  
+  }
+  
+  .loginLabelAtHeader{
+      font-weight: bold;
+      font-size: 18px;
+      color:#2b0c43;
+      // margin-left: -25px;
+  }
+
+ 
+
+  .headerNameCss{
+    color: #2b0c43;
+  }
+  .alert-radio-label.sc-ion-alert-md {
+    color: #2b0c43;
+  }
+  // Css For Profile Page Cards
+
+  .cardMargins{
+    margin-bottom: 0px; 
+    border-radius: 0px;
+    width:100%;
+    -webkit-margin-start: 0px;
+    margin-top:0px;
+    }
+
+  .profileCardHeader{
+    padding: 0%;
+    background:#f6f6ee;
+  }
+  .cardPadding{
+    padding: 0% 2% 0% 2%;
+  }
+  
+  .profilePageHeaderrow{
+    // background:#f6f6ee;
+    padding: 5px;
+  }
+
+  .profilePageHeaderStripSection1{
+    font-size:12px; 
+    color:#2b0c43;
+  }
+ 
+  .alert-radio-icon.sc-ion-alert-md {
+    --color-checked:#2b0c43;
+    border-color: #2b0c43;
+}
+
+  [aria-checked=true].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+    border-color: #2b0c43;
+  }
+
+  .alert-radio-inner.sc-ion-alert-md {
+    background-color: #2b0c43;
+  }
+  .alert-button.sc-ion-alert-md {
+    color:#2b0c43;
+  }
+
+  [aria-checked=true].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+    color: #2b0c43;
+}
+
+  // Css For Profile Page Cards Ends Here.
+
+
+  // Css For Update Pages
+
+  .ionSelectBorder {
+    border-bottom: 1px solid lightgray; 
+    color: #2b0c43 !important;
+  }
+  .saveButtonPadding {
+    padding: 10% 5% 5% 5%;
+  }
+  .inputDiv{
+    padding: 0% 5% 0% 5%;
+  }
+
+  .inoItem{
+    --padding-start: 0%;
+    
+  }
+
+   // Css For Update Pages Ends Here.
+   .sc-ion-card-md-s ion-list {
+  padding-top: 0px;
+  padding-bottom: 0px; 
+  }
+   
+  .authenticationLabel{
+    font-weight: bold;
+    font-size: 18px;
+    color:#2b0c43 !important; 
+    margin-left: -25px;
+  }
+  
+    .headerNameCss{
+      color: #2b0c43;
+    }
+
+   // Css For Profile Page Cards
+
+
+ 
+  .profileCardHeader{
+  padding: 0%;
+  background:#f6f6ee;
+  }
+  .cardPadding{
+  padding: 0% 2% 0% 2%;
+  }
+  
+  .profilePageHeaderrow{
+  // background:#f6f6ee;
+  padding: 5px;
+  }
+ 
+  .profilePageHeaderStripSection1{
+  font-size:12px; 
+  color:#2b0c43;
+  }
+  .profilePageHeaderStripSection2 {
+  font-size: 12px;
+  color: #4a90e2;
+  padding-top: 5px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  }
+ 
+  // Css For Profile Page Cards Ends Here
+
+  //Css for Search Bar Height & Icon
+//   .searchbar-input.sc-ion-searchbar-md {
+//     line-height: 60px !important;
+//     padding: 5px !important;
+//     border-radius: 4px !important;
+//     font-size: 18px !important;
+//     border-radius: 5px;
+//     }
+
+//   .searchbar-search-icon.sc-ion-searchbar-md {
+//     width: 0px !important;
+//     height: 0px !important;
+// }
+
+.errorMsg {
+  color : red;
+}
+
+
+//error image css on validation error occurred
+.errorimg{
+  margin-top: 22px !important;
+  width: 70% !important;
+  height: 70% !important;
+  margin-left: 20px !important;
+ }
+ 
+ //Normal css for input floating label
+ .blacklabel {
+  color: #2b0c43 !important;
+ }
+ //Normal css for input floating label(After Validation error occurred)
+ .redlabel {
+  color: red !important;
+ } 
+ 
+ //Validation Error Message Color css
+ .errorMsg{
+  color : red !important;
+ }
+ .sc-ion-alert-md-h {
+  --min-width: 90%;
+}
+
+ //Css for profile page images
+ .profile-picture {
+  padding: 0px;
+  border-radius: 100%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  margin: 5% auto;
+  // width: 80px;
+  // height: 80px;
+  overflow: hidden;
+  // background: #d6d1c3;
+  }
+  .fileIcon{
+      zoom: 2.0;
+      margin-top: -3%;
+     
+    }
+
+ .iconcss{
+   font-size: x-large;
+  //  --color:red;
+ }
+
+ .sc-ion-card-md-h {
+  // --background: var(--ion-item-background,transparent);
+  --color:#2b0c43;
+  
+ }
+
+ 
+    .cameraBacground{
+      border: 1px solid #fcefefe7;
+      padding: 10px;
+      border-radius: 100%;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      width: 15px;
+      height: 15px;
+      overflow: hidden;
+      background: #d6d1c3;
+      margin-left: 50%;
+      position: absolute;
+      border: solid 1px;
+    }
+
+//  .contentcss{
+//   font-size: 15px;
+//   color:#2b0c43;
+//    padding :5px;
+// }
+
+.ionimgcss{
+  color: #2b0c43;
+  font-size: 15px;
+  // width:15px; 
+  // height:15px;
+}
+
+// .locationNameCss{
+//   font-size: 15px;
+//   color:#2b0c43;
+//   margin-top:-5px;
+// }
+
+// .locationCss{
+//   color: #2b0c43;
+//   padding-right:2px;
+//   width:20px; 
+//   height:20px;
+// //  font-size: 15px
+// }
+
+// .experienceCss{
+//   font-size: 15px;
+//   color:#2b0c43;
+//   margin-top:1px;
+// }
+
+// .companyCss{
+//   font-size: 16px;
+//   color:#2b0c43;
+//   padding :5px;
+//    margin-top:-13px;
+// }
+
+// .postedDaysCss{
+//   font-size: 15px;
+//   color:#2b0c43;
+//    padding :5px; 
+// }
+  .cameraIcon{
+      // zoom: 2.0;
+      display: contents;
+    }
+
+
+    .Servicelabelclass{
+      margin-left: 14% !important;
+     }
+
+     .labelclass{
+      margin-left: 2% !important;
+      font-size: 14px !important;
+    }
+
+
+    .alert-sub-title.sc-ion-alert-md, .alert-title.sc-ion-alert-md {
+    /* color: #f12e2e; */
+    color: #2b0c43;
+}
+
+.verifiedEmail{
+  --border-color : #2b0c43;
+}
+
+.verifyEmail{
+  --border-color :red;
+}
+
+//Css for increase dropdown heigth
+.alert-checkbox-group.sc-ion-alert-md, .alert-radio-group.sc-ion-alert-md {
+  // max-height: 100% !important;
+  max-height: 445px !important;
+}
+
+//post service headers 
+.header{
+  font-weight:bold; 
+  font-size: 18px;
+  color: #2b0c43;
+}
+
+.companyCss{
+  font-size: 16px;
+  color:#2b0c43;
+  // padding :5px;
+  //  margin-top:-13px;
+}
+
+.experienceAndLocationPng{
+    width:15px;
+    height:15px;
+    margin-left: -5px;
+}
+
+.companyNameCss{
+
+  font-size: 16px;
+  color:#2b0c43; 
+  // padding :5px;
+  // margin-top:-10px;
+ 
+}
+
+.fillHeart{
+  float:right;
+  color:#2b0c43;
+  padding: 10%;
+}
+.emptyHeart{
+  float:right;
+  padding: 10%;
+}
+.uploadfilebtn{
+  width: 75px;
+  height: 20px;
+  font-size: 10px;
+  color: gray;
+  // border-color: gray !important;
+  margin-top: -6px;
+}
+
+.circle-pic{
+  width:50px;
+  height:50px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin-left: 25%;
+  margin-top: 10%;
+}
+
+.candidateProfileBackground{
+  border: 1px solid #2b0c43;
+  padding: 10px;
+  border-radius: 100%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  background: #ffffff;
+  // margin-left: 53%;
+  position: absolute;
+  }
+  #notifications-badge {
+    background-color: red;
+    position: absolute;
+    top: 12%;
+    right: 3%;
+    width: 7%;
+    height: 40%;
+    border-radius: 100%;
+  }
+  .notification-content{
+    margin-left: -7%;
+    margin-right: -7%;
+  }
+  
+/////////**********************************************/////////
+  //Code after input validations
+  
+.defaultColor{
+  color:#2b0c43;
+  // margin-top: 22px;
+}
+
+.formPadding{
+  padding: 3%;
+}
+
+.inputFields{
+  width: 100%;
+  font-size: larger;
+  margin-bottom: 3%;
+}
+
+ //radio buttons
+ .radioButton{
+  --color: var(--ion-color-step-400,#2b0c43);
+  --color-checked:#2b0c43;
+}
+
+
+.radioButtonGroup {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radioButton {
+  margin: 10px;
+}
+
+.boxShadow{
+  box-shadow: none;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: #2b0c43;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #2b0c43;
+}
+
+.checkBoxBorder{
+  --border-color: #2b0c43;
+  --background-checked: #2b0c43;
+  --border-color-checked: #2b0c43;
+}
+// .mat-option {
+//   color:#2b0c43;
+// }
+// .mat-select-value {
+//   color:#2b0c43;
+// }
+.cardLeftPadding {
+  padding: 0% 5% 0% 5%;
+  }
+  .leftLabelPadding{
+    padding-left: 3%;
+  }
+  .cardPaddingLeft
+    {
+      padding: 0% 5% 0% 3%;
+    }

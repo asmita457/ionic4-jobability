@@ -1,0 +1,115 @@
+ion-content.background{
+    --background: url(../../assets/img/backgroundlogin.png) 0 0/100% 70% no-repeat;
+}
+
+.cardMargins{
+    // height: 50% !important;
+    margin-top: 13%;
+    width: 94% !important;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 10px;
+   background:white;
+}
+
+.jobabilitylogo{
+    height: 10%;
+    margin-top: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+  }
+
+.passwordIcon{
+    font-size:2rem !important;
+    position: relative !important;
+    top: 22px !important;
+    margin: 0 auto !important;
+ }
+
+ .errorMsg{
+  color : red;
+}
+
+
+
+
+
+.inputPassword{
+    margin-top:8%;
+}
+
+.passwordHideShowIcon{
+    font-size:21px;
+}
+.passwordHideShowIconButton{
+    background:white; 
+    width: 40px;
+}
+
+.loginButton{
+    margin-top:8%;
+}
+
+.hideLoginCard{
+    width:40px;
+    height:40px;
+}
+
+.inputMobileNumber{
+    margin-top:30px
+}
+
+.loginWithOtpButton{
+    margin-bottom: 25px;
+    margin-top: 28px !important;
+}
+.labelWidth{
+    width: 100% !important;
+}
+
+
+// .inputColor1 {
+//   --border-color: var(--ion-color-danger, gray);
+// }
+// .inputColor2 {
+//     --border-color: var(--ion-color-danger, red);
+//   }
+
+// .item-md.item-input .item-inner {
+//     border-bottom-color: gray !important;
+// }
+
+.divCenter{
+    height: 50%;
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 10%;
+    }
+
+    // .item-interactive.item-has-focus {
+    //     --highlight-background: #2b0c43;
+    //   }
+
+    ion-item {
+        --highlight-color-focused: #2b0c43;
+        --highlight-color-valid: #2b0c43;;
+        // --highlight-color-invalid: red;
+      }
+
+    .backArrow{
+        padding: 20%;
+    }
+    
+    .loginLabel{
+        padding: 5%;
+        text-align: center;
+    }
+     
+      

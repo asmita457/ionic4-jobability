@@ -1,0 +1,220 @@
+<ion-toolbar class="new-background-color">
+  <ion-item lines="none" class="new-background-color">
+    <ion-icon (click)="closePage()" name="close" style=" color: #2b0c43"></ion-icon>
+    <ion-title style="margin-left: 5%; color: #2b0c43">Post Job</ion-title>
+  </ion-item>
+</ion-toolbar>
+
+<ion-content>
+  <h5 align="center" style="color:#2b0c43">Job Detail</h5>
+  <div class="inputDiv" style="margin-top:10px">
+
+
+    <ion-item class="inoItem headerNameCss">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showJobTitleErrorMsg == true, 'blacklabel' : showJobTitleErrorMsg == false}">
+              Job Title
+            </ion-label>
+            <ion-input type="text" name="jobtitle" [(ngModel)]="jobtitle" (ionChange)="jobTitleValidator()" required>
+            </ion-input>
+          </ion-col>
+          <ion-col size="2" *ngIf="showJobTitleErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-row>
+      <ion-col size="10">
+        <p class="errorMsg" *ngIf="showJobTitleErrorMsg">{{jobTitleErrorMsg}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-item class="inoItem headerNameCss">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showJobDescriptionErrorMsg == true, 'blacklabel' : showJobDescriptionErrorMsg == false}">
+              Job Description
+            </ion-label>
+            <ion-input class="headerNameCss" type="email" name="jobdescription" [(ngModel)]="jobdescription"
+              (ionChange)="jobDescriptionValidator()" required>
+            </ion-input>
+          </ion-col>
+          <ion-col size="2" *ngIf="showJobDescriptionErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-row>
+      <ion-col size="12">
+        <p class="errorMsg" *ngIf="showJobDescriptionErrorMsg">{{jobDescriptionErrorMsg}}</p>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-label class="headerNameCss"
+      [ngClass]="{'redlabel' : onDisabilityStatusSelect == true, 'blacklabel' : onDisabilityStatusSelect == false}">
+      Disability Type:</ion-label>
+    <ion-select class="ionSelectBorder ionselectcss" multiple="true" (ionChange)="onDisabilitySelect($event)"
+      placeholder="Disability" [(ngModel)]="disability_id">
+      <ion-select-option *ngFor="let item of disabilityArray;"
+        [value]="item.id">{{item.name}}</ion-select-option>
+    </ion-select>
+    <ion-label *ngIf="onDisabilityStatusSelect" style="color: red">Please select atleast one disability type</ion-label> <br>
+
+
+    <ion-label class="headerNameCss">Work Experience:</ion-label>
+    <br>
+    <ion-row class="ionselectcss">
+
+      <ion-col size="6">
+        <ion-label class="headerNameCss"
+          [ngClass]="{'redlabel' : onMinExperienceStatusSelect == true, 'blacklabel' : onMinExperienceStatusSelect == false}">
+          Min Experience:</ion-label>
+        <ion-select class="ionSelectBorder headerNameCss" [(ngModel)]="selectedMinExperienceValue"
+          (ionChange)="selecteMinExperienceValue($event)" placeholder="Min Experience">
+          <ion-select-option *ngFor="let item of min_experience; let i = index"
+            [value]="item" >
+            {{item}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label class="headerNameCss"
+          [ngClass]="{'redlabel' : onMaxExperienceStatusSelect == true, 'blacklabel' : onMaxExperienceStatusSelect == false}">
+          Max Experience:</ion-label>
+        <ion-select class="ionSelectBorder headerNameCss" [(ngModel)]="selectedMaxExperienceValue"
+          (ionChange)="selecteMaxExperienceValue($event)"  placeholder="Max Experience" >
+          <ion-select-option *ngFor="let item of max_experience; let i = index"
+            [value]="item">
+            {{item}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <br>
+
+    <ion-label class="headerNameCss">Annual Salary:</ion-label>
+    <br>
+    <ion-row class="ionselectcss">
+      <ion-col size="4">
+        <ion-label class="headerNameCss"
+          [ngClass]="{'redlabel' : onCurrencyStatusSelect == true, 'blacklabel' : onCurrencyStatusSelect == false}">
+          Currency:</ion-label>
+        <!-- <ion-select class="ionSelectBorder" [(ngModel)]="clearCurrency" (ionChange)="onChangeCurrency($event)"
+          placeholder="Currency">
+          <ion-select-option *ngFor="let item of currencyArray; let i = index"
+            [selected]="item.currency == currencyPreselection" [value]="item">
+            {{item.currency}}</ion-select-option>
+        </ion-select> -->
+
+        <ion-select class="ionSelectBorder" (ionChange)="onChangeCurrency($event)"
+        placeholder="Currency" [(ngModel)]="Currency_id">
+        <ion-select-option *ngFor="let item of currencyArray; let i = index"
+          [selected]="item.currency==INR" [value]="item.currency">
+          {{item.currency}}</ion-select-option>
+      </ion-select>
+      </ion-col>
+
+      <ion-col size="4">
+        <ion-label class="headerNameCss"
+          [ngClass]="{'redlabel' : onMinSalaryStatusSelect == true, 'blacklabel' : onMinSalaryStatusSelect == false}">
+          Min Salary:</ion-label>
+        <ion-select class="ionSelectBorder" [(ngModel)]="ctcFrom" (ionChange)="selectedMinSalaryValue($event)"
+          placeholder="Min Salary">
+          <ion-select-option *ngFor="let item of annual_ctc_from; let i = index" 
+            [value]="item">
+            {{item}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+
+
+      <ion-col size="4">
+        <ion-label class="headerNameCss"
+          [ngClass]="{'redlabel' : onMaxSalaryStatusSelect == true, 'blacklabel' : onMaxSalaryStatusSelect == false}">
+          Max Salary:</ion-label>
+        <ion-select class="ionSelectBorder" [(ngModel)]="ctcTo" (ionChange)="selectedMaxSalaryValue($event)"
+          placeholder="Max Salary">
+          <ion-select-option *ngFor="let item of annual_ctc_to; let i = index"
+            [value]="item">
+            {{item}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col size="1">
+        <ion-checkbox [(ngModel)]="salaryHideShow" clalabelss="checkBoxBorder"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <ion-label class="headerNameCss">Hide Salary from Jobseekers</ion-label>
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-item class="inoItem headerNameCss" style="margin-top:-9px">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showJobVacanciesErrorMsg == true, 'blacklabel' : showJobVacanciesErrorMsg == false}">
+              Vacancies
+            </ion-label>
+            <ion-input type="number" name="vacancies" [(ngModel)]="vacancies" (ionChange)="jobVacancyValidator()" required pattern="^[0-9]{10}$">
+            </ion-input>
+          </ion-col>
+          <ion-col size="2" *ngIf="showJobVacanciesErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-row>
+      <ion-col size="10">
+        <p class="errorMsg" *ngIf="showJobVacanciesErrorMsg">{{jobVacanciErrorMsg}}</p>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-item class="inoItem headerNameCss" style="margin-top:-9px">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label position="floating"
+              [ngClass]="{'redlabel' : showJobLastDateErrorMsg == true, 'blacklabel' : showJobLastDateErrorMsg == false}">
+              Last date for applying
+            </ion-label>
+
+            <ion-datetime #myPicker style="height: 30px" align="start" (ionChange)="jobLastDateValidator()"
+              displayFormat="YYYY-MM-DD" name="lastdate" [(ngModel)]="lastdate" min="{{startLastDate}}" max="2050-12-30">
+            </ion-datetime>
+
+          </ion-col>
+          <ion-col size="2" *ngIf="showJobLastDateErrorMsg">
+            <ion-img class="errorimg" src="assets/img/error.png">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-row>
+      <ion-col size="10">
+        <p class="errorMsg" *ngIf="showJobLastDateErrorMsg">{{jobLastDateErrorMsg}}</p>
+      </ion-col>
+    </ion-row>
+
+  </div>
+
+  <div class="saveButtonPadding">
+    <button class="buttonfont" (click)="nextPage()">CONTINUE</button>
+  </div>
+</ion-content>

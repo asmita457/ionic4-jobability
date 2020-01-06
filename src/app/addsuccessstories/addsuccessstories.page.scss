@@ -1,0 +1,33 @@
+.avatar-border-color{
+              img{                
+              border:solid 2px #2b0c43;
+              } 
+              margin: auto
+}
+#editor-container {
+              height: 250px;
+              width: 100%;
+              }
+
+              .addCameraBacground {
+                            border: 1px solid #fcefefe7;
+                            padding: 10px;
+                            border-radius: 100%;
+                            box-sizing: content-box;
+                            width: 15px;
+                            height: 15px;
+                            overflow: hidden;
+                            background: #d6d1c3;
+                            margin-left: 48%;
+                            position: absolute;
+                        }
+.profilePic{
+              width: 100px;
+              height: 100px;
+              border : solid 1px #2b0c43;
+              margin-left: -38%;
+}
+     
+img {
+    max-width: 100px;
+}
